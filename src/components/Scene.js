@@ -47,9 +47,13 @@ export default class Scene extends React.Component {
 	    const mesh = new THREE.Mesh( geometry, material );
 	    this.scene.add( mesh );
 
-	    this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        this.renderer.setPixelRatio( window.devicePixelRatio );
+        this.renderer.setSize( window.innerWidth, window.innerHeight );
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.xr.enabled = true;
         const container = document.querySelector('#scene'); 
-	    this.renderer.setSize( window.innerWidth, window.innerHeight );
 	  //  this.renderer.setAnimationLoop( animation );
         document.body.appendChild( this.renderer.domElement ); 
         this.renderer.render( this.scene, this.camera ); 
