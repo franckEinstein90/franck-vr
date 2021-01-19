@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'; 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; 
+import { TubePainter } from 'three/examples/jsm/misc/TubePainter.js';
 import { LoadingManager } from 'three';
 
 
@@ -21,6 +22,10 @@ export default class Scene extends React.Component {
 
         this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 50 );
         this.camera.position.set( 0, 1.6, 3 );
+
+        this.controls = new OrbitControls( this.camera, document.body );
+        this.controls.target.set( 0, 1.6, 0 );
+        this.controls.update();
 
 	    this.scene = new THREE.Scene();
         const floorGometry = new THREE.PlaneBufferGeometry( 4, 4 );
