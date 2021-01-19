@@ -11,6 +11,8 @@ export default class Scene extends React.Component {
 
     constructor( props ) {
         super(props);  
+        this.animate        = this.animate.bind( this );
+        this.renderScene =  this.renderScene.bind( this ) ; 
     }
     componentDidMount(){
 
@@ -56,10 +58,15 @@ export default class Scene extends React.Component {
         const container = document.querySelector('#scene'); 
 	  //  this.renderer.setAnimationLoop( animation );
         document.body.appendChild( this.renderer.domElement ); 
-        this.renderer.render( this.scene, this.camera ); 
         document.body.appendChild( VRButton.createButton( this.renderer ) );
+        this.animate(); 
     }
-
+    animate(){
+        this.renderer.setAnimationLoop(this.renderScene); 
+    }
+    renderScene(){
+        this.renderer.render(this.scene, this.camera); 
+    }
     render(){
         return (
             <>
