@@ -1,0 +1,11 @@
+body{
+    overflow: hidden; 
+}
+.scene-container{
+    margin:0;
+    padding:0;  
+    width:90vw;
+    height:90vh;
+    color:orange; 
+    background-color: red; ;
+}
