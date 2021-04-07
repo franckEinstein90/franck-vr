@@ -6,14 +6,18 @@ import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; 
 import { TubePainter } from 'three/examples/jsm/misc/TubePainter.js';
 import { LoadingManager } from 'three';
+import { setFloor } from "./floor" ; 
+import { setFrontWall } from "./frontWall" ;
 
 
 export default class Scene extends React.Component {
 
     constructor( props ) {
         super(props);  
-        this.animate        = this.animate.bind( this );
-        this.renderScene =  this.renderScene.bind( this ) ; 
+        this.animate        =  this.animate.bind( this );
+        this.renderScene    =  this.renderScene.bind( this );
+        this.onSelectStart  = this.onSelectStart( this ); 
+
     }
     setControls(){
         this.controls = new OrbitControls( this.camera, document.body );
@@ -21,18 +25,7 @@ export default class Scene extends React.Component {
         this.controls.update();
     }
 
-    setFloor(){
-       
-        const floorGometry = new THREE.PlaneBufferGeometry( 4, 4 );
-        const floorMaterial = new THREE.MeshStandardMaterial( {
-            color: 0x222222,
-            roughness: 1.0,
-            metalness: 0.0
-        } );
-        const floor = new THREE.Mesh( floorGometry, floorMaterial );
-        floor.rotation.x = - Math.PI / 2; 
-         this.scene.add( floor );
-    }
+
 
     addPainters(){
         this.painter1 = new TubePainter();
@@ -41,18 +34,22 @@ export default class Scene extends React.Component {
 		this.painter2 = new TubePainter();
 		this.scene.add( this.painter2.mesh );
     }
+
+    onSelectStart(){
+
+    }
     setControllers(){
         this.controller1 = this.renderer.xr.getController( 0 );
-/*        this.controller1.addEventListener( 'selectstart', onSelectStart );
-        this.controller1.addEventListener( 'selectend', onSelectEnd );
+        this.controller1.addEventListener( 'selectstart', this.onSelectStart );
+       /* this.controller1.addEventListener( 'selectend', onSelectEnd );
         this.controller1.addEventListener( 'squeezestart', onSqueezeStart );
         this.controller1.addEventListener( 'squeezeend', onSqueezeEnd );*/
         this.controller1.userData.painter = this.painter1;
         this.scene.add( this.controller1 );
 
         this.controller2 = this.renderer.xr.getController( 1 );
-/*        this.controller2.addEventListener( 'selectstart', onSelectStart );
-        this.controller2.addEventListener( 'selectend', onSelectEnd );
+        this.controller2.addEventListener( 'selectstart', this.onSelectStart );
+       /* this.controller2.addEventListener( 'selectend', onSelectEnd );
         this.controller2.addEventListener( 'squeezestart', onSqueezeStart );
         this.controller2.addEventListener( 'squeezeend', onSqueezeEnd );*/
         this.controller2.userData.painter = this.painter2;
@@ -80,12 +77,12 @@ export default class Scene extends React.Component {
 
         this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 50 );
         this.camera.position.set( 0, 1.6, 3 );
-        this.setControls(); 
-        this.setFloor(); 
-       
-       
-        const grid = new THREE.GridHelper( 10, 20, 0x111111, 0x111111 );
-        this.scene.add( grid );
+        this.setControls();
+
+        setFloor( this.scene ) ; 
+        setFrontWall( this.scene ) ; 
+      /*  const grid = new THREE.GridHelper( 10, 20, 0x111111, 0x111111 );
+        this.scene.add( grid );*/
 
         this.scene.add( new THREE.HemisphereLight( 0x888877, 0x777788 ) );
         const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
