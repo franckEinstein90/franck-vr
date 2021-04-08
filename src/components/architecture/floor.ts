@@ -1,5 +1,5 @@
 import * as THREE from 'three';    
-import { plane } from "./plane" ;
+import { plane } from "../plane" ;
 
 export const setFloor = (scene : THREE.Scene )=>{
     const floor = plane( 0xaa3333,4 ); 

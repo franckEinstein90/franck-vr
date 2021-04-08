@@ -6,9 +6,9 @@ import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; 
 import { TubePainter } from 'three/examples/jsm/misc/TubePainter.js';
 import { LoadingManager } from 'three';
-import { setFloor } from "./floor" ; 
-import { setFrontWall } from "./frontWall" ;
-
+import { setFloor } from "./architecture/floor" ; 
+import { setFrontWall } from "./architecture/frontWall" ;
+import { screen } from "./screen"; 
 
 export default class Scene extends React.Component {
 
@@ -70,6 +70,8 @@ export default class Scene extends React.Component {
 
 
     }
+
+
     componentDidMount(){
 
         this.scene = new THREE.Scene();
@@ -81,20 +83,12 @@ export default class Scene extends React.Component {
 
         setFloor( this.scene ) ; 
         setFrontWall( this.scene ) ; 
-      /*  const grid = new THREE.GridHelper( 10, 20, 0x111111, 0x111111 );
-        this.scene.add( grid );*/
-
+        screen( this.scene ) ; 
+        
         this.scene.add( new THREE.HemisphereLight( 0x888877, 0x777788 ) );
         const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
         light.position.set( 0, 4, 0 );
         this.scene.add( light );
-
-	    const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-	    const material = new THREE.MeshNormalMaterial();
-
-	    const mesh = new THREE.Mesh( geometry, material );
-	    this.scene.add( mesh );
-
         this.addPainters(); 
         this.renderer = new THREE.WebGLRenderer( { antialias: true } );
         this.renderer.setPixelRatio( window.devicePixelRatio );
@@ -104,7 +98,8 @@ export default class Scene extends React.Component {
         this.setControllers(); 
         document.body.appendChild( this.renderer.domElement ); 
         document.body.appendChild( VRButton.createButton( this.renderer ) );
-        this.animate(); 
+        this.animate();
+
     }
     animate(){
         this.renderer.setAnimationLoop(this.renderScene); 

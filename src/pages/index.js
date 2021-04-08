@@ -1,11 +1,12 @@
 import * as React from "react"
-import './index.css'; 
-import Scene from "../components/Scene"; 
-
+import Scene from "../components/Scene" ; 
+import styles from "./index.module.css" ; 
 
 const IndexPage = () => {
   return (
-    <Scene/>
+    <>
+     <Scene/>
+    </>
   )
 }
 
