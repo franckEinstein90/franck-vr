@@ -4,9 +4,9 @@ import styles from "./index.module.css" ;
 
 const IndexPage = () => {
   return (
-    <>
+    <div className={styles.page}>
      <Scene/>
-    </>
+    </div>
   )
 }
 

@@ -1,7 +1,11 @@
-.vrScene {
-    position:absolute; 
-    width:100vh; 
-    height: 100vw; 
-    background-color: red; 
+.page{
+    box-sizing: border-box;
+    z-index:1; 
+    position:absolute;
+    left:0; 
+    top:0;
+    width:100vw; 
+    height: 100vh; 
+    background-color: brown; 
 
 }

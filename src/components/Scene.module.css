@@ -1,0 +1,13 @@
+.canvas {
+    box-sizing: border-box; 
+    position:absolute; 
+    z-index:2; 
+    top:10vh; 
+    left:0; 
+    width:100vw; 
+    height:75vh;
+
+    border-color:black; 
+    border-style: groove;
+    border-width:1px; 
+}

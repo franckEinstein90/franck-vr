@@ -9,28 +9,31 @@ import { LoadingManager } from 'three';
 import { setFloor } from "./architecture/floor" ; 
 import { setFrontWall } from "./architecture/frontWall" ;
 import { screen } from "./screen"; 
+import { setCameras } from "./camera" ;
+import { getCanvas } from "./vrCanvas" ; 
 
+import styles from "./Scene.module.css";
+ 
 export default class Scene extends React.Component {
 
     constructor( props ) {
-        super(props);  
-        this.animate        =  this.animate.bind( this );
-        this.renderScene    =  this.renderScene.bind( this );
-        this.onSelectStart  = this.onSelectStart( this ); 
 
-    }
+        super(props);  
+        this.animate        =   this.animate.bind( this );
+        this.renderScene    =   this.renderScene.bind( this );
+        this.onSelectStart  =   this.onSelectStart( this ); 
+
+    }; 
+
     setControls(){
-        this.controls = new OrbitControls( this.camera, document.body );
+        this.controls = new OrbitControls( this.camera, this.canvas );
         this.controls.target.set( 0, 1.6, 0 );
         this.controls.update();
     }
 
-
-
     addPainters(){
         this.painter1 = new TubePainter();
         this.scene.add( this.painter1.mesh );
-
 		this.painter2 = new TubePainter();
 		this.scene.add( this.painter2.mesh );
     }
@@ -76,27 +79,31 @@ export default class Scene extends React.Component {
 
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x222222 );
-
-        this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 50 );
-        this.camera.position.set( 0, 1.6, 3 );
+        this.canvas = getCanvas() ;  
+        this.camera = setCameras( this.canvas ); 
         this.setControls();
 
         setFloor( this.scene ) ; 
         setFrontWall( this.scene ) ; 
         screen( this.scene ) ; 
-        
+
         this.scene.add( new THREE.HemisphereLight( 0x888877, 0x777788 ) );
         const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
         light.position.set( 0, 4, 0 );
         this.scene.add( light );
         this.addPainters(); 
-        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        this.renderer = new THREE.WebGLRenderer( { 
+            canvas      : this.canvas, 
+            antialias   : true 
+        } );
         this.renderer.setPixelRatio( window.devicePixelRatio );
-        this.renderer.setSize( window.innerWidth, window.innerHeight );
+        this.renderer.setSize( this.canvas.clientWidth, this.canvas.clientHeight );
         this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer.xr.enabled = true;
         this.setControllers(); 
-        document.body.appendChild( this.renderer.domElement ); 
+
+
+
         document.body.appendChild( VRButton.createButton( this.renderer ) );
         this.animate();
 
@@ -110,6 +117,7 @@ export default class Scene extends React.Component {
     render(){
         return (
             <>
+                <canvas id="c" className={styles.canvas}></canvas>
             </>
         )
     }
