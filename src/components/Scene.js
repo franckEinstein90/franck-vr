@@ -41,16 +41,18 @@ export default class Scene extends React.Component {
     onSelectStart(){
 
     }
+
+
     setControllers(){
-        this.controller1 = this.renderer.xr.getController( 0 );
+      /*  this.controller1 = this.renderer.xr.getController( 0 );
         this.controller1.addEventListener( 'selectstart', this.onSelectStart );
        /* this.controller1.addEventListener( 'selectend', onSelectEnd );
         this.controller1.addEventListener( 'squeezestart', onSqueezeStart );
         this.controller1.addEventListener( 'squeezeend', onSqueezeEnd );*/
-        this.controller1.userData.painter = this.painter1;
+       /* this.controller1.userData.painter = this.painter1;
         this.scene.add( this.controller1 );
 
-        this.controller2 = this.renderer.xr.getController( 1 );
+        */this.controller2 = this.renderer.xr.getController( 1 );
         this.controller2.addEventListener( 'selectstart', this.onSelectStart );
        /* this.controller2.addEventListener( 'selectend', onSelectEnd );
         this.controller2.addEventListener( 'squeezestart', onSqueezeStart );
@@ -68,7 +70,7 @@ export default class Scene extends React.Component {
         pivot.position.z = - 0.05;
         mesh.add( pivot );
 
-        this.controller1.add( mesh.clone() );
+       // this.controller1.add( mesh.clone() );
         this.controller2.add( mesh.clone() );
 
 
