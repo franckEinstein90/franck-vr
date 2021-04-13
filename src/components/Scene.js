@@ -11,7 +11,7 @@ import { setFrontWall } from "./architecture/frontWall" ;
 import { screen } from "./screen"; 
 import { setCameras } from "./camera" ;
 import { getCanvas } from "./vrCanvas" ; 
-
+import { leftController } from "./controllers/controllerMeshRight" ; 
 import styles from "./Scene.module.css";
  
 export default class Scene extends React.Component {
@@ -44,21 +44,21 @@ export default class Scene extends React.Component {
 
 
     setControllers(){
-      /*  this.controller1 = this.renderer.xr.getController( 0 );
+        this.controller1 = this.renderer.xr.getController( 0 );
         this.controller1.addEventListener( 'selectstart', this.onSelectStart );
        /* this.controller1.addEventListener( 'selectend', onSelectEnd );
         this.controller1.addEventListener( 'squeezestart', onSqueezeStart );
         this.controller1.addEventListener( 'squeezeend', onSqueezeEnd );*/
-       /* this.controller1.userData.painter = this.painter1;
+        this.controller1.userData.painter = this.painter1;
         this.scene.add( this.controller1 );
 
-        */this.controller2 = this.renderer.xr.getController( 1 );
-        this.controller2.addEventListener( 'selectstart', this.onSelectStart );
+        this.leftController = this.renderer.xr.getController( 1 );
+        this.leftController.addEventListener( 'selectstart', this.onSelectStart );
        /* this.controller2.addEventListener( 'selectend', onSelectEnd );
         this.controller2.addEventListener( 'squeezestart', onSqueezeStart );
         this.controller2.addEventListener( 'squeezeend', onSqueezeEnd );*/
-        this.controller2.userData.painter = this.painter2;
-        this.scene.add( this.controller2 );
+        this.leftController.userData.painter = this.painter2;
+        this.scene.add( this.leftController );
         
         const geometry = new THREE.CylinderBufferGeometry( 0.01, 0.02, 0.08, 5 );
         geometry.rotateX( - Math.PI / 2 );
@@ -70,9 +70,8 @@ export default class Scene extends React.Component {
         pivot.position.z = - 0.05;
         mesh.add( pivot );
 
-       // this.controller1.add( mesh.clone() );
-        this.controller2.add( mesh.clone() );
-
+        this.controller1.add( mesh.clone() );
+        this.leftController.add( leftController() );
 
     }
 
@@ -103,13 +102,10 @@ export default class Scene extends React.Component {
         this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer.xr.enabled = true;
         this.setControllers(); 
-
-
-
         document.body.appendChild( VRButton.createButton( this.renderer ) );
         this.animate();
-
     }
+
     animate(){
         this.renderer.setAnimationLoop(this.renderScene); 
     }
