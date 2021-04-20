@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 
-import * as THREE from 'three'; 
+import * as THREE from 'three';
+import { newScene } from "./scene/newScene" ; 
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'; 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; 
@@ -19,9 +20,10 @@ export default class Scene extends React.Component {
     constructor( props ) {
 
         super(props);  
-        this.animate        =   this.animate.bind( this );
-        this.renderScene    =   this.renderScene.bind( this );
-        this.onSelectStart  =   this.onSelectStart( this ); 
+        this.canvasHtmlId       =   "mainCanvas" ; 
+        this.animate        =   this.animate.bind( this ) ;
+        this.renderScene    =   this.renderScene.bind( this ) ;
+        this.onSelectStart  =   this.onSelectStart( this ) ; 
 
     }; 
 
@@ -78,9 +80,8 @@ export default class Scene extends React.Component {
 
     componentDidMount(){
 
-        this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0x222222 );
-        this.canvas = getCanvas() ;  
+        this.scene  = newScene() ;  
+        this.canvas = getCanvas( this.canvasHtmlId ) ;  
         this.camera = setCameras( this.canvas ); 
     //    this.setControls();
 
@@ -88,7 +89,6 @@ export default class Scene extends React.Component {
     //    setFrontWall( this.scene ) ; 
     //    screen( this.scene ) ; 
 
-        this.scene.add( new THREE.HemisphereLight( 0x888877, 0x777788 ) );
      //   const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
       //  light.position.set( 0, 4, 0 );
        // this.scene.add( light );
@@ -109,13 +109,15 @@ export default class Scene extends React.Component {
     animate(){
         this.renderer.setAnimationLoop(this.renderScene); 
     }
+
     renderScene(){
         this.renderer.render(this.scene, this.camera); 
     }
+
     render(){
         return (
             <>
-                <canvas id="c" className={styles.canvas}></canvas>
+                <canvas id={this.canvasHtmlId} className={styles.canvas}></canvas>
             </>
         )
     }
