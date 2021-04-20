@@ -82,17 +82,17 @@ export default class Scene extends React.Component {
         this.scene.background = new THREE.Color( 0x222222 );
         this.canvas = getCanvas() ;  
         this.camera = setCameras( this.canvas ); 
-        this.setControls();
+    //    this.setControls();
 
         setFloor( this.scene ) ; 
-        setFrontWall( this.scene ) ; 
-        screen( this.scene ) ; 
+    //    setFrontWall( this.scene ) ; 
+    //    screen( this.scene ) ; 
 
         this.scene.add( new THREE.HemisphereLight( 0x888877, 0x777788 ) );
-        const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
-        light.position.set( 0, 4, 0 );
-        this.scene.add( light );
-        this.addPainters(); 
+     //   const light = new THREE.DirectionalLight( 0xffffff, 0.5 );
+      //  light.position.set( 0, 4, 0 );
+       // this.scene.add( light );
+       // this.addPainters(); 
         this.renderer = new THREE.WebGLRenderer( { 
             canvas      : this.canvas, 
             antialias   : true 
@@ -101,7 +101,7 @@ export default class Scene extends React.Component {
         this.renderer.setSize( this.canvas.clientWidth, this.canvas.clientHeight );
         this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer.xr.enabled = true;
-        this.setControllers(); 
+        //this.setControllers(); 
         document.body.appendChild( VRButton.createButton( this.renderer ) );
         this.animate();
     }
