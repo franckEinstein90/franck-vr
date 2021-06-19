@@ -1,0 +1,39 @@
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 5vh;
+$desktopWidth       : 1000px;
+
+.bottomNav {
+    display:none;
+    font-family: 'Suisse SemiBold, Helvetica Neue, Helvetica, Arial, sans-serif'; 
+    justify-content: center ;
+    color  : white;  
+    width  : 100vw;    
+    padding: 0;
+    line-height: 60px;
+    -webkit-font-smoothing: antialiased;
+    text-transform: capitalize;
+
+    @media screen and (min-width: $desktopWidth){
+        position: absolute ; 
+        top:$pageHeight + $topNavHeight;
+        margin:0;
+        height:$bottomNavHeight;
+        background: none;
+        left:0; 
+        box-sizing: border-box;
+        display: flex ;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        line-height: initial; 
+        z-index:100;
+        border-top: 1px solid black;
+
+        >div{
+            color: white;
+            font-stretch:extra-expanded;
+        }
+    }
+     
+}

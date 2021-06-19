@@ -1,0 +1,49 @@
+
+$font:'Nunito', sans-serif; 
+$desktop : 1000px;
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 5vh ; 
+
+.text{
+    height:100%;
+    
+    @media screen and (min-width: $desktop) {
+        font-family : $font; 
+        font-size:30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+        color:white;
+        position:absolute;
+        left:4vw;
+        z-index: 3;
+        height:auto;
+        max-width:30vw;
+        background: none;
+    }
+}
+
+.title {
+    font-size: 50px;
+}
+
+.canvas {
+    box-sizing: border-box; 
+   
+    @media screen and (min-width: $desktop){
+        border:2px solid red;
+        min-height:100%;
+        min-width:100%;
+
+    }
+}
+
+button.buyNow{
+    font:3vmin $font;
+    background-color: transparent;
+    border-radius: 10px;
+    color:white;
+    font-size:20px;
+}

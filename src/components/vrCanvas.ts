@@ -1,8 +1,8 @@
 
 
-export const getCanvas = ( canvasId ) : Element =>{
+export const getCanvas = ( canvasId : string ) : HTMLCanvasElement =>{
 
-    const canvas = document.querySelector(`#${canvasId}`);
+    const canvas : HTMLCanvasElement = document.querySelector(`#${canvasId}`);
     return canvas ;
 
 }

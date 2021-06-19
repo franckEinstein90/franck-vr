@@ -3,6 +3,7 @@ module.exports = {
     title: "FranckVR",
   },
   plugins: [
+    "gatsby-plugin-scss-typescript", 
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",

@@ -1,0 +1,17 @@
+
+$font:'Nunito', sans-serif; 
+$desktop : 1000px;
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 5vh ; 
+
+.canvas {
+    box-sizing: border-box; 
+   
+    @media screen and (min-width: $desktop){
+        border:2px solid red;
+        min-height:100%;
+        min-width:100%;
+
+    }
+}
