@@ -59,8 +59,9 @@ export default class ScreenScene extends React.Component {
       this.animate();
     }
 
+    const gearTextureUrl = "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg";    
     loader.load(
-      "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg",
+      gearTextureUrl,
       onLoadNucleusTexture
     )
 
