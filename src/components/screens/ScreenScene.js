@@ -3,15 +3,19 @@ import { setCameras } from "../camera";
 import { newScene } from "../scene/newScene";
 import { getCanvas } from "../vrCanvas";
 import * as Shapes from "../ThreeStack/BasicShapes/ball" ;
-
+import * as Gears from "../ThreeStack/Mechanics/Gears/gears"; 
 import Splash1 from "../business/Splash1"; 
 import * as THREE from 'three';
 import styles from "./ScreenScene.module.scss"; 
+import { SSL_OP_MSIE_SSLV2_RSA_PADDING } from "constants";
+import { line } from "../ThreeStack/BasicShapes/lines";
 
 export default class ScreenScene extends React.Component {
 
+
   constructor( props ){
     super(props); 
+    this.mounted = false ; 
     this.state = {
       textureLoaded : false
     } 
@@ -21,7 +25,8 @@ export default class ScreenScene extends React.Component {
  }
 
   componentDidMount(){
-
+    if( this.mounted ) return ;
+    this.mounted = true;  
     this.scene  = newScene( 0x000000 ) ;  
     this.canvas = getCanvas( this.canvasHtmlId ) ;  
     this.camera = setCameras( this.canvas, 1000, {x : 0, y : 0, z : 230} ); 
@@ -44,27 +49,38 @@ export default class ScreenScene extends React.Component {
     const loader = new THREE.TextureLoader();
 
     const onLoadNucleusTexture = (texture)=>{
-      this.nucleus = Shapes.torus({radius : 30}, texture) ;
-      this.nucleus.rotateZ(90);
-      this.scene.add(this.nucleus);
 
-      this.gear2= Shapes.torus({radius:15}, texture); 
-      this.gear2.scale.z = 0.5;
-      this.gear2.translateX(35);
-      this.gear2.translateZ(20);
-      this.scene.add(this.gear2); 
+      this.gearSystem = Gears.gearSystem() ;
+      const driverGear = Gears.gear({radius : 30}, texture, this.scene) ; 
+      driverGear.translateY(-10); 
+      this.gearSystem.driver(driverGear)  ;
+
+      const g = Gears.gear({radius:35}, texture, this.scene); 
+      this.gearSystem.addGear(g); 
+      g.translateX(75);
+      g.translateY(-10);
+
+      const g2 = Gears.gear({radius:20}, texture, this.scene);
+      this.gearSystem.addGear(g2); 
+      g2.translateY(60);
+      //this.scene.add(g2.getMesh()); 
 
       this.setState({textureLoaded : true}) ; 
       this.onresize();
       this.animate();
     }
-
     const gearTextureUrl = "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg";    
-    loader.load(
-      gearTextureUrl,
-      onLoadNucleusTexture
-    )
 
+    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(55, -10, 10));
+    this.scene.add(l1);
+
+    const l2 = line( new THREE.Vector3(0, 0, 10), new THREE.Vector3(0, 50, 10));
+    this.scene.add(l2);
+
+    const l3 = line( new THREE.Vector3(0, 60, 10), new THREE.Vector3(-200, 60, 10));
+    this.scene.add(l3);
+
+    loader.load( gearTextureUrl, onLoadNucleusTexture ); 
     window.addEventListener('resize', ()=>{
         this.onresize();
     })
@@ -79,20 +95,11 @@ export default class ScreenScene extends React.Component {
 
 
   animate(){ 
-
   
-    if(this.nucleus !== undefined){
-        this.nucleus.geometry.verticesNeedUpdate = true;
-        this.nucleus.geometry.normalsNeedUpdate = true;
-        this.nucleus.geometry.computeVertexNormals();
-        this.nucleus.geometry.computeFaceNormals();
-        //this.nucleus.translateX(20);
-        this.nucleus.rotation.z += 0.052;
-        this.gear2.rotation.z -= 0.052;
-    }
+    if(this.gearSystem !== undefined) this.gearSystem.run() ; 
+    this.renderer.render(this.scene, this.camera);  
+    requestAnimationFrame(this.animate);
 
-      this.renderer.render(this.scene, this.camera);  
-      requestAnimationFrame(this.animate);
   }
 
   render(){

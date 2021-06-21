@@ -25,7 +25,7 @@ export class PageContent extends React.Component {
   render(){
     return (
           <div className={styles.page}> 
-            {this.state.xrSupport? (<Scene/>) : (<ScreenScene/>)}
+            <ScreenScene/>
           </div>
       )
     }

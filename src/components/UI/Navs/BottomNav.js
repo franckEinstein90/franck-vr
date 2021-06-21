@@ -19,7 +19,7 @@ export class BottomNav extends React.Component {
   render() {
     return (
       <div className={styles.bottomNav}>
-        <div>hello</div>
+        <div>Try this site in VR</div>
       </div>
     ); 
   }

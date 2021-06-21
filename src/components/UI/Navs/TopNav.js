@@ -26,7 +26,7 @@ export class TopNav extends React.Component {
           <NavItem>Docs</NavItem>
         </div>
         <div>
-          <NavItem>Careers</NavItem>
+          <NavItem>Sign Up</NavItem>
         </div>
       </div>
     ); 

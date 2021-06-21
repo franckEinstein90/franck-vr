@@ -79,7 +79,7 @@ export default class Scene extends React.Component {
 
 
     componentDidMount(){
-
+        debugger;
         this.scene  = newScene() ;  
         this.canvas = getCanvas( this.canvasHtmlId ) ;  
         this.camera = setCameras( this.canvas ); 
