@@ -36,6 +36,10 @@ export const gear = ( specs: Shapes.Round, texture, scene ) : Gear =>{
         translateY : (distance) => {
             mesh.translateY(distance); 
             meshNucleus.translateY(distance); 
+        }, 
+        translateZ : (distance) => {
+            mesh.translateZ(distance); 
+            meshNucleus.translateZ(distance); 
         }
 
     }
@@ -43,13 +47,19 @@ export const gear = ( specs: Shapes.Round, texture, scene ) : Gear =>{
 
 
 export const gearSystem = (
-    
+    scene: THREE.Scene 
     ) => {
 
     const _driverRotationPerCycle = 0.072; 
 
     let _driver : Gear ; 
-    let _connectedGears : Gear[] = [] ;
+    let _connectedGears : Gear[] = [] ; 
+
+    const gridHelper = new THREE.GridHelper( 200, 20, 0x0000ff, 0x808080 );
+    gridHelper.rotateX(Math.PI/2);
+ //   gridHelper.translateX( 80 )
+    scene.add( gridHelper );
+
 
     return {
 
@@ -67,6 +77,11 @@ export const gearSystem = (
         run : ()=>{
             _driver.turn(_driverRotationPerCycle) ; //.getMesh().rotation.z += _driverRotationPerCycle ; 
             _connectedGears.forEach(g => g.turn(-1 * _driverRotationPerCycle)) ; 
+        }, 
+
+        translateX : ( x : number )=>{
+            _driver.translateX(x); 
+            gridHelper.translateX(x); 
         }
 
     } 

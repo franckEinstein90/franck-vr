@@ -10,7 +10,9 @@ class NavItem extends React.Component {
     render(){
       const h = this.props.tag; 
       return(
-        <h3>{this.props.children}</h3>
+        <div className={styles.navItem}>
+          <h3 onClick={()=>this.props.action()}>{this.props.children}</h3>
+        </div>
       ) ; 
     }
 }
@@ -20,6 +22,9 @@ export class TopNav extends React.Component {
     return (
     
       <div className={styles.topNav}>
+          <NavItem action={()=>this.props.changeLanguage()}>
+            {this.props.language === 'English' ? 'FR' : 'EN'}
+          </NavItem>
         <div>
           <NavItem>Start</NavItem>
           <NavItem>Market</NavItem>

@@ -1,5 +1,6 @@
 declare namespace TopNavModuleScssNamespace {
   export interface ITopNavModuleScss {
+    navItem: string;
     topNav: string;
   }
 }

@@ -46,24 +46,23 @@ export default class ScreenScene extends React.Component {
     ambientLight.position.set(0, 20, 20);
     this.scene.add(ambientLight);
 
-    const loader = new THREE.TextureLoader();
-
+    const loader = new THREE.TextureLoader();	
+   
     const onLoadNucleusTexture = (texture)=>{
 
-      this.gearSystem = Gears.gearSystem() ;
-      const driverGear = Gears.gear({radius : 30}, texture, this.scene) ; 
-      driverGear.translateY(-10); 
+      this.gearSystem = Gears.gearSystem( this.scene ) ;
+      const driverGear = Gears.gear({radius : 25}, texture, this.scene) ;
+      driverGear.translateZ(5);
       this.gearSystem.driver(driverGear)  ;
+
+      this.gearSystem.translateX(100); 
 
       const g = Gears.gear({radius:35}, texture, this.scene); 
       this.gearSystem.addGear(g); 
-      g.translateX(75);
-      g.translateY(-10);
+      g.translateX( 200 );
 
-      const g2 = Gears.gear({radius:20}, texture, this.scene);
+      const g2 = Gears.gear({radius:35}, texture, this.scene);
       this.gearSystem.addGear(g2); 
-      g2.translateY(60);
-      //this.scene.add(g2.getMesh()); 
 
       this.setState({textureLoaded : true}) ; 
       this.onresize();
@@ -71,14 +70,14 @@ export default class ScreenScene extends React.Component {
     }
     const gearTextureUrl = "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg";    
 
-    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(55, -10, 10));
-    this.scene.add(l1);
+    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(550, -10, 10));
+  //  this.scene.add(l1);
 
     const l2 = line( new THREE.Vector3(0, 0, 10), new THREE.Vector3(0, 50, 10));
-    this.scene.add(l2);
+   // this.scene.add(l2);
 
-    const l3 = line( new THREE.Vector3(0, 60, 10), new THREE.Vector3(-200, 60, 10));
-    this.scene.add(l3);
+    const l3 = line( new THREE.Vector3(-300, 56, 10), new THREE.Vector3(0, 56, 10));
+  //  this.scene.add(l3);
 
     loader.load( gearTextureUrl, onLoadNucleusTexture ); 
     window.addEventListener('resize', ()=>{

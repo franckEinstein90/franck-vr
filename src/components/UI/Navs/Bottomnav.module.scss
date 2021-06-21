@@ -1,31 +1,30 @@
 $topNavHeight       : 9vh; 
 $pageHeight         : 86vh; 
-$bottomNavHeight    : 5vh;
+$bottomNavHeight    : 10vh;
 $desktopWidth       : 1000px;
 
 .bottomNav {
-    display:none;
-    font-family: 'Suisse SemiBold, Helvetica Neue, Helvetica, Arial, sans-serif'; 
+    box-sizing: border-box;
+    position: absolute ; 
+    top:100vh - $bottomNavHeight;
     justify-content: center ;
-    color  : white;  
+    color  : white; 
+    left:0; 
     width  : 100vw;    
     padding: 0;
     line-height: 60px;
     -webkit-font-smoothing: antialiased;
     text-transform: capitalize;
-
+    background-color:orange;
     @media screen and (min-width: $desktopWidth){
-        position: absolute ; 
-        top:$pageHeight + $topNavHeight;
-        margin:0;
+       margin:0;
         height:$bottomNavHeight;
         background: none;
         left:0; 
-        box-sizing: border-box;
         display: flex ;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         line-height: initial; 
         z-index:100;
         border-top: 1px solid black;
@@ -34,6 +33,9 @@ $desktopWidth       : 1000px;
             color: white;
             font-stretch:extra-expanded;
         }
+        >div:first-child{
+            width:20%;
+        }
+
     }
-     
 }

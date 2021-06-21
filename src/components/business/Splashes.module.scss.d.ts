@@ -1,7 +1,6 @@
 declare namespace SplashesModuleScssNamespace {
   export interface ISplashesModuleScss {
     buyNow: string;
-    canvas: string;
     text: string;
     title: string;
   }

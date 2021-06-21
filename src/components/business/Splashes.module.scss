@@ -6,9 +6,13 @@ $pageHeight         : 86vh;
 $bottomNavHeight    : 5vh ; 
 
 .text{
+    box-sizing: border-box;
     height:100%;
     
     @media screen and (min-width: $desktop) {
+        margin-left:2vw;
+        padding-top:2vh;
+        padding-bottom:2vh;
         font-family : $font; 
         font-size:30px;
         display: flex;
@@ -17,11 +21,12 @@ $bottomNavHeight    : 5vh ;
         align-items: center;
         color:white;
         position:absolute;
-        left:4vw;
+        align-self: flex-start;
         z-index: 3;
         height:auto;
         max-width:40vw;
-        background: none;
+        border-top:1px solid white;
+        border-bottom:1px solid white;
     }
 }
 
@@ -29,21 +34,19 @@ $bottomNavHeight    : 5vh ;
     font-size: 50px;
 }
 
-.canvas {
-    box-sizing: border-box; 
-   
-    @media screen and (min-width: $desktop){
-        border:2px solid red;
-        min-height:100%;
-        min-width:100%;
 
+button.buyNow{
+
+    font:3vmin $font;
+    background-color: transparent;
+    color:white;
+    cursor: pointer;
+
+    @media screen and (min-width:1200px){
+        font-size:50px;
     }
 }
 
-button.buyNow{
-    font:3vmin $font;
-    background-color: transparent;
-    border-radius: 10px;
-    color:white;
-    font-size:20px;
+button.buyNow:hover{
+    background-color: rgba($color: #15c915, $alpha: 0.3);
 }

@@ -5,13 +5,16 @@ $topNavHeight       : 9vh;
 $pageHeight         : 86vh; 
 $bottomNavHeight    : 5vh ; 
 
+$borders : 2px dashed gray;
 .canvas {
     box-sizing: border-box; 
+    border-bottom:$borders;
+    overflow: hidden;
    
     @media screen and (min-width: $desktop){
-        border:2px solid red;
-        min-height:100%;
+       min-height:100%;
         min-width:100%;
+        max-width:100vw;
 
     }
 }
