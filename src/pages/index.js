@@ -18,7 +18,7 @@ export default class IndexPage extends React.Component{
     super(props); 
     this.state={
       language  : 'English', 
-      page      : Page.Account
+      page      : Page.Home
     }
     this.changeLanguage = this.changeLanguage.bind( this ); 
     this.changePage     = this.changePage.bind( this ) ; 

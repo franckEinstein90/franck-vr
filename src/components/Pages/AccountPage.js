@@ -11,12 +11,7 @@ export class AccountPage extends React.Component {
     render(){
       return (
         <div className={styles.accountPage}>
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
-          fdsfds fdsfdsfds fdsfdsa aaaaaafdsa
+          <h1>{process.env.Gatsby_API_URL}</h1>
         </div>
       ) ; 
     }
