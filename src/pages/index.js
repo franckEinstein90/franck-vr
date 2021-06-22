@@ -6,7 +6,7 @@ import { TopNav }      from "../components/UI/Navs/TopNav" ;
 import { BottomNav }   from "../components/UI/Navs/BottomNav";
 import video1          from "../images/gears.mp4" ; 
 import { PageContent } from "../components/UI/page/PageContent";
-import { Page }        from "../UI/Pages/definitions";
+import { PageId }        from "../UI/Pages/definitions";
 
 
 const appTitle = "powerBuild" ; 
@@ -18,7 +18,7 @@ export default class IndexPage extends React.Component{
     super(props); 
     this.state={
       language  : 'English', 
-      page      : Page.Home
+      page      : PageId.Home
     }
     this.changeLanguage = this.changeLanguage.bind( this ); 
     this.changePage     = this.changePage.bind( this ) ; 

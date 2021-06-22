@@ -10,7 +10,7 @@ class Hello extends React.Component {
     }
 }
 
-export enum Page {
+export enum PageId {
     Home = 1, 
     TryIT, 
     Account 

@@ -1,6 +1,6 @@
 import * as React from "react"
 import styles     from "./TopNav.module.scss" ;
-import {Page}     from "./../../../UI/definitions"  ; 
+import {PageId} from "../../../UI/Pages/definitions"
 
 class NavItem extends React.Component {
 
@@ -30,15 +30,15 @@ export class TopNav extends React.Component {
             {this.props.language === 'English' ? 'FR' : 'EN'}
           </NavItem>
         <div>
-          <NavItem>Start</NavItem>
+          {/*<NavItem>Start</NavItem>
           <NavItem>Market</NavItem>
-          <NavItem>Docs</NavItem>
+          <NavItem>Docs</NavItem>*/}
         </div>
         <div>
           <NavItem 
             currentPage = { this.props.currentPage }
-            targetPage  = { Page.Account }
-            action={()=>this.props.changePage(Page.Account)}>Sign Up</NavItem>
+            targetPage  = { PageId.Account }
+            action={()=>this.props.changePage(PageId.Account)}>Sign Up</NavItem>
         </div>
       </div>
     ); 

@@ -2,7 +2,7 @@ import * as React from "react"
 import styles from "./PageContent.module.scss" ; 
 import Scene from "../../Scene" ;
 import ScreenScene  from "../../screens/ScreenScene"; 
-import { Page } from "../../../UI/Pages/definitions";
+import { PageId } from "../../../UI/Pages/definitions";
 import { AccountPage  } from "../../Pages/AccountPage";
 
 export class PageContent extends React.Component {
@@ -23,9 +23,8 @@ export class PageContent extends React.Component {
   }
  
   renderPage( ){
-
-    if( this.props.page === Page.Home )   return (<ScreenScene/>) ; 
-    if( this.props.page === Page.Account) return (<AccountPage/>) ; 
+    if( this.props.page === PageId.Home )   return (<ScreenScene/>) ; 
+    if( this.props.page === PageId.Account) return (<AccountPage/>) ; 
 
   }
 
