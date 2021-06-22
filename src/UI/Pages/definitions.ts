@@ -10,6 +10,12 @@ class Hello extends React.Component {
     }
 }
 
+export enum Page {
+    Home = 1, 
+    TryIT, 
+    Account 
+}
+
 export const topNav = () : UITypes.PageComponent =>{
     const container : JSX.Element = Boxes.box([styles.topNav], Hello); 
     return {

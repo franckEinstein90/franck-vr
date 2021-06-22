@@ -1,5 +1,6 @@
 import * as React from "react"
-import styles from "./TopNav.module.scss" ; 
+import styles     from "./TopNav.module.scss" ;
+import {Page}     from "./../../../UI/definitions"  ; 
 
 class NavItem extends React.Component {
 
@@ -11,16 +12,19 @@ class NavItem extends React.Component {
       const h = this.props.tag; 
       return(
         <div className={styles.navItem}>
-          <h3 onClick={()=>this.props.action()}>{this.props.children}</h3>
+          <h3 onClick={()=>this.props.action()}>
+            {this.props.children}
+          </h3>
         </div>
       ) ; 
     }
 }
 
 export class TopNav extends React.Component {
+
   render() {
+
     return (
-    
       <div className={styles.topNav}>
           <NavItem action={()=>this.props.changeLanguage()}>
             {this.props.language === 'English' ? 'FR' : 'EN'}
@@ -31,7 +35,10 @@ export class TopNav extends React.Component {
           <NavItem>Docs</NavItem>
         </div>
         <div>
-          <NavItem>Sign Up</NavItem>
+          <NavItem 
+            currentPage = { this.props.currentPage }
+            targetPage  = { Page.Account }
+            action={()=>this.props.changePage(Page.Account)}>Sign Up</NavItem>
         </div>
       </div>
     ); 
