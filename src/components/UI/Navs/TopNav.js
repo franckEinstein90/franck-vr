@@ -5,14 +5,13 @@ import {PageId} from "../../../UI/Pages/definitions"
 class NavItem extends React.Component {
 
     constructor( props ){
-      super( props ) ; 
+      super( props ) ;
     }
 
-    render(){
-      const h = this.props.tag; 
+   render(){
       return(
-        <div className={styles.navItem}>
-          <h3 onClick={()=>this.props.action()}>
+        <div className={styles.navItem} onClick={this.props.action}>
+          <h3>
             {this.props.children}
           </h3>
         </div>
@@ -30,9 +29,11 @@ export class TopNav extends React.Component {
             {this.props.language === 'English' ? 'FR' : 'EN'}
           </NavItem>
         <div>
-          {/*<NavItem>Start</NavItem>
+          <NavItem action={()=>this.props.changePage(PageId.Home)}>
+              Start
+          </NavItem>
           <NavItem>Market</NavItem>
-          <NavItem>Docs</NavItem>*/}
+          <NavItem>Docs</NavItem>
         </div>
         <div>
           <NavItem 
