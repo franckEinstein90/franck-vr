@@ -33,15 +33,15 @@ export class BuildLab extends React.Component {
           alpha : true
     } );    
 
-      this.renderer.setSize( this.canvas.clientWidth, this.canvas.clientHeight );  
-      this.renderer.setPixelRatio( window.devicePixelRatio );    
+    this.renderer.setSize( this.canvas.clientWidth, this.canvas.clientHeight );  
+    this.renderer.setPixelRatio( window.devicePixelRatio );    
 
-      const signals = this.editor.signals ; 
-      signals.get('rendererCreated').dispatch( this.renderer )  ;
+    const signals = this.editor.signals ; 
+    signals.get('rendererCreated').dispatch( this.renderer )  ;
 
        
-      const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(550, -10, 10));
-      this.editor.scene.add(l1);
+    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(550, -10, 10));
+    this.editor.scene.add(l1);
     
       this.onresize();
       this.animate(); 
@@ -65,14 +65,15 @@ export class BuildLab extends React.Component {
 
   }
 
-
-
   render(){
       return (
-        <>
-        <canvas id={this.canvasHtmlId} className={styles.canvas}></canvas>
-        <div style={{color:'white'}}>BuildLab</div>
-        </>
+        <div>
+        <div><canvas id={this.canvasHtmlId} className={styles.buildLab}></canvas></div>
+        <div style={{color:'black'}}>BuildLab</div>
+        </div>
       )
   }
 }
+
+
+

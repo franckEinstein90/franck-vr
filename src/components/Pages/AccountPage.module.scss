@@ -1,3 +1,132 @@
+$color: rgba(#01d4f0, 0.7);
+$buildLabHeight: 80vh;
+
+
 .accountPage {
+    background-color: orange;
     color:white;
+
+} 
+
+.accountPage{
+      max-width: 80vw;
+      height:80%;
+      max-height:  $buildLabHeight;
+      background-color:$color;
+      border-radius:20px;
+     
+      animation-name: anime; 
+      animation-duration: 3s; //cubic-bezier(0.16, 1, 0.3, 1) 1s  alternate;
+      /* animation-fill-mode: forwards; */
+    }
+
+    @keyframes anime {
+      0% {
+        width: 60px;
+        height: 60px;
+        background: $color;
+        
+      }
+      25% {
+        width: 60px;
+        height: 60px;
+        background: $color;
+      
+      }
+      50% {
+        width: 60px;
+        height: 60vh;
+        background: $color;
+     
+      }
+      100% {
+        width: 80vw;
+        height: 80%; 
+        background: $color;
+       
+      }
 }
+
+.button {
+    min-width:300px;
+    display: inline-block;
+    padding: 0 18px 0 6px;
+    border: 0 none;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  .button:hover {
+    text-decoration: none;
+  }
+  
+.buttonSocialLogin {
+    margin-bottom: 12px;
+    margin-right: 12px;
+    color: white;
+    height: 50px;
+    line-height: 46px;
+    position: relative;
+    text-align: left;
+  }
+
+.buttonSocialLogin .icon {
+    margin-right: 12px;
+    font-size: 24px;
+    line-height: 24px;
+    width: 42px;
+    height: 24px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.buttonSocialLogin .icon:before {
+    display: inline-block;
+    width: 40px;
+  }
+
+.buttonSocialLogin .icon:after {
+    content: "";
+}
+  
+  .buttonFacebook {
+    background-color: #4b70ab;
+    border: 1px solid #3b5988;
+  }
+  .buttonFacebook .icon {
+    border-right: 1px solid #3b5988;
+  }
+  .buttonFacebook .icon:after {
+    border-right: 1px solid #6b8bbe;
+  }
+  .buttonFacebook:hover {
+    background-color: #436499;
+  }
+  .buttonGithub {
+    background-color: #333;
+    border: 1px solid #1a1a1a;
+  }
+  .buttonGithub .icon {
+    border-right: 1px solid #1a1a1a;
+  }
+  .buttonGithub .icon:after {
+    border-right: 1px solid #4d4d4d;
+  }
+  .buttonGithub:hover {
+    background-color: #262626;
+  }
+  
+  .buttonLinkedin {
+    background-color: #0087be;
+    border: 1px solid #00638b;
+  }
+  .buttonLinkedin .icon {
+    border-right: 1px solid #00638b;
+  }
+  .buttonLinkedin .icon:after {
+    border-right: 1px solid #00abf1;
+  }
+  .buttonLinkedin:hover {
+    background-color: #0075a5;
+  }

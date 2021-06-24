@@ -1,6 +1,13 @@
 declare namespace AccountPageModuleScssNamespace {
   export interface IAccountPageModuleScss {
     accountPage: string;
+    anime: string;
+    button: string;
+    buttonFacebook: string;
+    buttonGithub: string;
+    buttonLinkedin: string;
+    buttonSocialLogin: string;
+    icon: string;
   }
 }
 
