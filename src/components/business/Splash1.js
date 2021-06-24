@@ -8,10 +8,10 @@ import styles from "./Splashes.module.scss";
     render(){
         return (
             <div className={styles.text}>
-            <div className={styles.title}>Build before you Build </div>
-            <div>Think, Build, Test</div>
-            <div>before you build</div>
-            <div><button className={styles.buyNow}>Try Now</button></div>
+                <div className={styles.title}>Build before you Build </div>
+                <div>Think, Build, Test</div>
+                <div>before you build</div>
+                {this.props.children}
             </div>
         )
     }

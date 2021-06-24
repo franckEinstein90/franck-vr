@@ -4,6 +4,7 @@ import Scene from "../../Scene" ;
 import ScreenScene  from "../../screens/ScreenScene"; 
 import { PageId } from "../../../UI/Pages/definitions";
 import { AccountPage  } from "../../Pages/AccountPage";
+import { BuildLab } from "../../Pages/BuildLab" ; 
 
 export class PageContent extends React.Component {
   
@@ -23,8 +24,11 @@ export class PageContent extends React.Component {
   }
  
   renderPage( ){
-    if( this.props.page === PageId.Home )   return (<ScreenScene/>) ; 
-    if( this.props.page === PageId.Account) return (<AccountPage/>) ; 
+    if( this.props.currentPage === PageId.Home )   return (
+      <ScreenScene buyNowAction={()=>this.props.changePage(PageId.BuildLab)}/>
+    ) ; 
+    if( this.props.currentPage === PageId.Account ) return (<AccountPage/>) ; 
+    if( this.props.currentPage === PageId.BuildLab ) return (<BuildLab/>); 
 
   }
 

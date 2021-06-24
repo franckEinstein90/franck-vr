@@ -4,11 +4,15 @@ import { newScene } from "../scene/newScene";
 import { getCanvas } from "../vrCanvas";
 import * as Shapes from "../ThreeStack/BasicShapes/ball" ;
 import * as Gears from "../ThreeStack/Mechanics/Gears/gears"; 
+
+import BuyNow from "../UI/Buttons/BuyNow";
 import Splash1 from "../business/Splash1"; 
+
 import * as THREE from 'three';
 import styles from "./ScreenScene.module.scss"; 
-import { SSL_OP_MSIE_SSLV2_RSA_PADDING } from "constants";
 import { line } from "../ThreeStack/BasicShapes/lines";
+
+
 
 export default class ScreenScene extends React.Component {
 
@@ -101,11 +105,12 @@ export default class ScreenScene extends React.Component {
 
   }
 
+
   render(){
     return(   
       <> 
         <canvas id={this.canvasHtmlId} className={styles.canvas}></canvas>
-        <Splash1/>
+        <Splash1><BuyNow action={this.props.buyNowAction} /></Splash1>
       </>
     )}
 }

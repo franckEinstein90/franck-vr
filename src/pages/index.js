@@ -5,6 +5,7 @@ import styles from "./index.module.scss" ;
 import { TopNav }      from "../components/UI/Navs/TopNav" ; 
 import { BottomNav }   from "../components/UI/Navs/BottomNav";
 import video1          from "../images/gears.mp4" ; 
+import vrManipVideo    from "../images/mv_manip.mp4" ; 
 import { PageContent } from "../components/UI/page/PageContent";
 import { PageId }        from "../UI/Pages/definitions";
 
@@ -36,6 +37,10 @@ export default class IndexPage extends React.Component{
     }
   }
 
+  backgroundVideo(){
+    if(this.state.page === PageId.Account) return vrManipVideo ; 
+    return video1 ; 
+  }
   render(){
 
   return (
@@ -48,7 +53,7 @@ export default class IndexPage extends React.Component{
       </Helmet>
 
       <video className={styles.backgroundVideo} 
-            playsInline autoPlay muted loop src={video1} 
+            playsInline autoPlay muted loop src={this.backgroundVideo()} 
             type="video/mp4">
       </video>
 
@@ -58,7 +63,11 @@ export default class IndexPage extends React.Component{
               changePage={ p => this.changePage(p) } 
               />
 
-      <PageContent page={this.state.page} />
+      <PageContent  language={this.state.language}
+                    currentPage ={this.state.page} 
+                    changePage={ p => this.changePage(p) } 
+                    />
+
       <BottomNav/>
  
   </div>

@@ -13,7 +13,8 @@ class Hello extends React.Component {
 export enum PageId {
     Home = 1, 
     TryIT, 
-    Account 
+    Account, 
+    BuildLab 
 }
 
 export const topNav = () : UITypes.PageComponent =>{

@@ -35,18 +35,3 @@ $bottomNavHeight    : 5vh ;
 }
 
 
-button.buyNow{
-
-    font:3vmin $font;
-    background-color: transparent;
-    color:white;
-    cursor: pointer;
-
-    @media screen and (min-width:1200px){
-        font-size:50px;
-    }
-}
-
-button.buyNow:hover{
-    background-color: rgba($color: #15c915, $alpha: 0.3);
-}

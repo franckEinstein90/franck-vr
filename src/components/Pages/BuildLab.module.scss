@@ -1,0 +1,18 @@
+$font:'Nunito', sans-serif; 
+$desktop : 1000px;
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 5vh ; 
+
+$borders : 2px dashed gray;
+.canvas {
+    box-sizing: border-box; 
+    border:$borders;
+    overflow: hidden;
+
+    @media screen and (min-width: $desktop){
+        width:75%; 
+        height:75%;
+        border-radius: 20px;
+    }
+}

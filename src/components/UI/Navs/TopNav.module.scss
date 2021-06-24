@@ -4,36 +4,55 @@ $bottomNavHeight    : 5vh;
  
 
 .topNav {
+    position: absolute ; 
+    top:0; 
+    left:0; 
     box-sizing: border-box;
-    display:none;
     justify-content: center ;
     color  : white;  
     width  : 100vw;    
     padding: 0;
+    z-index: 200;
+    display: flex ;
+    flex-direction: row;
     -webkit-font-smoothing: antialiased;
     text-transform: capitalize;
+    font-family:'Nunito', sans-serif;
+    justify-content: space-around;
+    line-height: initial; 
+    margin:0;
+    background: none;
+    max-height: $topNavHeight; 
 
-    @media screen and (min-width: 600px){
-        font-family:'Nunito', sans-serif;
-        position: absolute ; 
-        top:0; 
-        left:0; 
-        box-sizing: border-box;
-        display: flex ;
-        flex-direction: row;
-        justify-content: space-around;
-        line-height: initial; 
-        margin:0;
-        z-index:200;
-        background: none;
+    @media screen and (min-width:1200px) {
+        max-height: $topNavHeight + 3vh;
+        
     }
-     
+
+    @media screen and (min-width:1900px) {
+        max-height: $topNavHeight + 8vh;
+    }
+
+
+
     >div{
-        font-size:30px;
+        font-size:10px;
         box-sizing: border-box;
         display: flex;
         align-items: stretch;
         justify-content: space-around;
+        overflow: hidden;
+
+        @media screen and (min-width:1200px) {
+            max-height: 8vh;
+        }
+
+        @media screen and (min-width:1900px) {
+            overflow: initial;
+            min-height: $topNavHeight ;
+            max-height: $topNavHeight ;
+        }
+
      }
 
     >div:first-child{
@@ -49,19 +68,36 @@ $bottomNavHeight    : 5vh;
 }
 
 .navItem{
-    background-color: rgba($color: #a0f0f0, $alpha: 0.4);
+    box-sizing: border-box;
+    background-color: rgba($color: #a0f0f0, $alpha: 0.3);
     margin-left:10px;
     flex:1;
     align-self: stretch;
     text-align: center;
     cursor: pointer;
+
+    @media screen and (min-width:1900px){
+        height: 100%;   
+        border-bottom: 1px black solid;
+    } 
 }
 
 .navItem:hover{
-    background-color: rgba($color: #a0ff00, $alpha: 0.3);
+    background-color: rgba($color: #a0ff00, $alpha: 0.4);
+    border-bottom: 3px rgb(224, 226, 220) inset;
+    border-left: 3px rgb(224, 226, 220) solid;
+    border-right: 3px rgb(224, 226, 220) inset;
 }
 
 .topNav h3{
-    font-size:30px;
-    font-stretch: extra-expanded; 
+    padding:0;
+    margin: 0;
+    margin-top:10px;
+    padding-bottom:10px;
+    font-size: 20px;
+    font-stretch: extra-expanded;
+    @media screen and (min-width:1900px){
+        padding-top:20px;
+        font-size:30px; 
+    } 
 }
