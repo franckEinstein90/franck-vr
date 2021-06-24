@@ -36,8 +36,6 @@ class BackgroundVideo extends React.Component{
   }
 }
 
-
-
 export default class IndexPage extends React.Component{
 
   constructor(props){
@@ -45,7 +43,7 @@ export default class IndexPage extends React.Component{
     super( props ); 
     this.state={
       language  : 'English', 
-      page      : PageId.Account, 
+      page      : PageId.Home, 
       theme     : Theme.Light
     } ; 
     this.changeLanguage = this.changeLanguage.bind( this ); 
