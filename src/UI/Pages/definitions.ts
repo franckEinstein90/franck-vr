@@ -17,12 +17,10 @@ export enum PageId {
     BuildLab 
 }
 
-export const topNav = () : UITypes.PageComponent =>{
-    const container : JSX.Element = Boxes.box([styles.topNav], Hello); 
-    return {
-        container 
-    }
-} ; 
+export enum Theme {
+    Dark = 1, 
+    Light = 1
+}
 
 export const newPage = () : UITypes.Page => {
     const container = Boxes.box([styles.page],""); 

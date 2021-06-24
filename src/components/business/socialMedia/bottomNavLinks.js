@@ -7,15 +7,19 @@ export default class SocialMediaLinks extends React.Component {
       super( props ) ; 
     }
 
+
     render(){
-      const h = this.props.tag; 
+      const h = this.props.tag;
+      const themeClass = styles.lightIcons; 
+      const cssClasses = btnClass => `${styles.smGlobalBtn} ${themeClass} ${btnClass}` ; 
+
       return(
             <div className={styles.socialMediaLinks}>
-                <div><a className={`${styles.smGlobalBtn} ${styles.facebookBtn}`} href="#" ></a></div>
-                <div><a className={`${styles.twitterBtn} ${styles.smGlobalBtn}`} href="#" ></a></div>
-                <div><a className={`${styles.googleplusBtn} ${styles.smGlobalBtn}`} href="#" ></a></div>
-                <div><a className={`${styles.linkedinBtn} ${styles.smGlobalBtn}`} href="#" ></a></div>
-                <div><a className={`${styles.pinterestBtn} ${styles.smGlobalBtn}`} href="#" ></a></div>
+                <div><a className={cssClasses(styles.facebookBtn)} href="#" ></a></div>
+                <div><a className={cssClasses(styles.twitterBtn)} href="#" ></a></div>
+                <div><a className={cssClasses(styles.googleplusBtn)} href="#" ></a></div>
+                <div><a className={cssClasses(styles.linkedinBtn)} href="#" ></a></div>
+                <div><a className={cssClasses(styles.pinterestBtn)} href="#" ></a></div>
             </div>
       ) ; 
     }

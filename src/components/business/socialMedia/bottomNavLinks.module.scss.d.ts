@@ -1,7 +1,9 @@
 declare namespace BottomNavLinksModuleScssNamespace {
   export interface IBottomNavLinksModuleScss {
+    darkIcons: string;
     facebookBtn: string;
     googleplusBtn: string;
+    lightIcons: string;
     linkedinBtn: string;
     pinterestBtn: string;
     smGlobalBtn: string;

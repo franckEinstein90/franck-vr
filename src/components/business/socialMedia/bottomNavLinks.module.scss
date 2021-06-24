@@ -4,6 +4,13 @@
     align-items: center;
     justify-content: space-between;
 }
+.lightIcons {
+    color : white;
+}
+
+.darkIcons {
+    color: black ; 
+}
 .smGlobalBtn { /* global button class */
     display: inline-block;
     position: relative;
@@ -15,7 +22,6 @@
     padding: 0px;
     text-decoration: none;
     text-align: center;
-    color: #fff;
     font-size: 25px;
     font-weight: normal;
     line-height: 2em;

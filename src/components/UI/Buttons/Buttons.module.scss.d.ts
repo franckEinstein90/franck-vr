@@ -1,5 +1,10 @@
 declare namespace ButtonsModuleScssNamespace {
   export interface IButtonsModuleScss {
+    animate1: string;
+    animate2: string;
+    animate3: string;
+    animate4: string;
+    buildNow: string;
     buyNow: string;
   }
 }

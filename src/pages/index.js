@@ -4,13 +4,39 @@ import styles from "./index.module.scss" ;
 
 import { TopNav }      from "../components/UI/Navs/TopNav" ; 
 import { BottomNav }   from "../components/UI/Navs/BottomNav";
+
 import video1          from "../images/gears.mp4" ; 
 import vrManipVideo    from "../images/mv_manip.mp4" ; 
+import architectVideo  from "../images/architect.mp4"
 import { PageContent } from "../components/UI/page/PageContent";
-import { PageId }        from "../UI/Pages/definitions";
+import { PageId, Theme }        from "../UI/Pages/definitions";
 
 
 const appTitle = "powerBuild" ; 
+
+
+class BackgroundVideo extends React.Component{
+    constructor( props ){
+      super(props) ; 
+    }
+
+  selectVideo(){
+    if(this.props.currentPage === PageId.Account) return video1; 
+    if(this.props.currentPage === PageId.BuildLab) return architectVideo;
+    return vrManipVideo  ; 
+  }
+
+  render(){
+      return(
+      <video className={styles.backgroundVideo} 
+            playsInline autoPlay muted loop src={this.selectVideo()} 
+            type="video/mp4">
+      </video>
+      )
+  }
+}
+
+
 
 export default class IndexPage extends React.Component{
 
@@ -19,7 +45,8 @@ export default class IndexPage extends React.Component{
     super(props); 
     this.state={
       language  : 'English', 
-      page      : PageId.Home
+      page      : PageId.Home, 
+      theme     : Theme.Light
     }
     this.changeLanguage = this.changeLanguage.bind( this ); 
     this.changePage     = this.changePage.bind( this ) ; 
@@ -37,10 +64,15 @@ export default class IndexPage extends React.Component{
     }
   }
 
-  backgroundVideo(){
-    if(this.state.page === PageId.Account) return vrManipVideo ; 
-    return video1 ; 
+  changeTheme(){
+    if(this.state.theme === Theme.Light){
+      this.setState({theme : Theme.Dark})
+    } else {
+      this.setState({theme : Theme.Light})
+    }
+
   }
+
   render(){
 
   return (
@@ -52,10 +84,7 @@ export default class IndexPage extends React.Component{
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <video className={styles.backgroundVideo} 
-            playsInline autoPlay muted loop src={this.backgroundVideo()} 
-            type="video/mp4">
-      </video>
+      <BackgroundVideo currentPage={this.state.page}/>
 
       <TopNav language={this.state.language} 
               changeLanguage={()=>this.changeLanguage()} 
@@ -68,7 +97,7 @@ export default class IndexPage extends React.Component{
                     changePage={ p => this.changePage(p) } 
                     />
 
-      <BottomNav/>
+      <BottomNav currentPage={this.state.page} theme={this.state.theme}/>
  
   </div>
 

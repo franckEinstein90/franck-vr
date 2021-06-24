@@ -18,6 +18,7 @@ class NavItem extends React.Component {
 
 export class BottomNav extends React.Component {
   render() {
+
     return (
       <div className={styles.bottomNav}>
         <SocialMediaLinks/>

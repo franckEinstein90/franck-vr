@@ -4,7 +4,7 @@ import { newScene } from "../scene/newScene";
 import { getCanvas } from "../vrCanvas";
 import * as Shapes from "../ThreeStack/BasicShapes/ball" ;
 import * as Gears from "../ThreeStack/Mechanics/Gears/gears"; 
-
+import BuildNow from "../UI/Buttons/BuildNow" ; 
 import BuyNow from "../UI/Buttons/BuyNow";
 import Splash1 from "../business/Splash1"; 
 
@@ -110,7 +110,7 @@ export default class ScreenScene extends React.Component {
     return(   
       <> 
         <canvas id={this.canvasHtmlId} className={styles.canvas}></canvas>
-        <Splash1><BuyNow action={this.props.buyNowAction} /></Splash1>
+        <Splash1><BuildNow action={this.props.buyNowAction} /></Splash1>
       </>
     )}
 }
