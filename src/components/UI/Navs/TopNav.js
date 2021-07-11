@@ -1,6 +1,6 @@
 import * as React from "react"
 import styles     from "./TopNav.module.scss" ;
-import {PageId} from "../../../UI/Pages/definitions"
+import {PageId} from "../page/definitions"
 
 class NavItem extends React.Component {
 

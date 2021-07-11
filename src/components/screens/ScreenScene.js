@@ -62,7 +62,7 @@ export default class ScreenScene extends React.Component {
       this.gearSystem.translateX(100); 
 
       const g = Gears.gear({radius:35}, texture, this.scene); 
-      this.gearSystem.addGear(g); 
+      this.gearSystem.addGear(g);
       g.translateX( 200 );
 
       const g2 = Gears.gear({radius:35}, texture, this.scene);
@@ -73,15 +73,6 @@ export default class ScreenScene extends React.Component {
       this.animate();
     }
     const gearTextureUrl = "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg";    
-
-    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(550, -10, 10));
-  //  this.scene.add(l1);
-
-    const l2 = line( new THREE.Vector3(0, 0, 10), new THREE.Vector3(0, 50, 10));
-   // this.scene.add(l2);
-
-    const l3 = line( new THREE.Vector3(-300, 56, 10), new THREE.Vector3(0, 56, 10));
-  //  this.scene.add(l3);
 
     loader.load( gearTextureUrl, onLoadNucleusTexture ); 
     window.addEventListener('resize', ()=>{

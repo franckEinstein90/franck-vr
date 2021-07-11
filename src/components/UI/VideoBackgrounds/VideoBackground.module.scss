@@ -1,0 +1,28 @@
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 10vh;
+$font : 'Nunito', sans-serif ; 
+
+
+video.backgroundVideo{
+    box-sizing: border-box;
+    position: absolute;
+    object-fit: cover;
+    overflow: hidden;
+    z-index:1; 
+
+    width:100vw; 
+    max-width: 100vw;
+
+    height:100vh;
+    max-height: 100vh; 
+    top:0;  
+    left:0;
+
+    @media screen and (min-width: 500px) {
+        height:$topNavHeight ;
+        height:100vh;
+        margin:0;
+        padding:0;
+    }
+}

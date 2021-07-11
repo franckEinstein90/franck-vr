@@ -40,7 +40,12 @@ export const gear = ( specs: Shapes.Round, texture, scene ) : Gear =>{
         translateZ : (distance) => {
             mesh.translateZ(distance); 
             meshNucleus.translateZ(distance); 
+        }, 
+
+        rotateX : (angle)=>{
+            mesh.rotation.z = angle
         }
+
 
     }
 } ;

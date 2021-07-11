@@ -3,11 +3,11 @@ import { setCameras } from "../camera";
 import { newScene } from "../scene/newScene";
 import { getCanvas } from "../vrCanvas";
 
-import * as THREE from 'three';
+import * as THREE from 'three' ;
 import styles from "./BuildLab.module.scss" ; 
-import { line } from "../ThreeStack/BasicShapes/lines";
-import { BuildItEditor } from "../UI/BuildItEditor/buildItEditor";
-
+import { line } from "../ThreeStack/BasicShapes/lines" ;
+import { BuildItEditor } from "../UI/BuildItEditor/buildItEditor" ;
+import * as Monad from "../../components/UI/BuildItEditor/libs/monads/definitions" ; 
 
 export class BuildLab extends React.Component {
   
@@ -39,15 +39,19 @@ export class BuildLab extends React.Component {
     const signals = this.editor.signals ; 
     signals.get('rendererCreated').dispatch( this.renderer )  ;
 
-       
-    const l1 = line( new THREE.Vector3(0, -10, 10), new THREE.Vector3(550, -10, 10));
+
+
+    const l1 = line( new THREE.Vector3(0, 0, 0), new THREE.Vector3(250, 0, ));
     this.editor.scene.add(l1);
     
-      this.onresize();
-      this.animate(); 
-      window.addEventListener('resize', ()=>{
+    const l2 = line( new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 100, 0));
+    this.editor.scene.add(l2);
+
+    this.onresize();
+    this.animate(); 
+    window.addEventListener('resize', ()=>{
         this.onresize();
-      })
+    })
  }
 
   onresize(){  
@@ -70,6 +74,7 @@ export class BuildLab extends React.Component {
         <div>
         <div><canvas id={this.canvasHtmlId} className={styles.buildLab}></canvas></div>
         <div style={{color:'black'}}>BuildLab</div>
+        <div style={{color:'white',fontSize:'1.5em'}}>{Monad.test()}</div>
         </div>
       )
   }

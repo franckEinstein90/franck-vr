@@ -1,6 +1,5 @@
 declare namespace IndexModuleScssNamespace {
   export interface IIndexModuleScss {
-    backgroundVideo: string;
     fullPage: string;
     pageContainer: string;
     subTitle: string;
