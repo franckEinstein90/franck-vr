@@ -1,21 +1,17 @@
 import React, {useContext} from 'react';
 
 import * as THREE from 'three';
-import { newScene } from "./scene/newScene" ; 
+import { newScene } from "../scene/newScene" ; 
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
-import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'; 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; 
 import { TubePainter } from 'three/examples/jsm/misc/TubePainter.js';
-import { LoadingManager } from 'three';
-import { setFloor } from "./ThreeStack/floor" ; 
-import { setFrontWall } from "./ThreeStack/frontWall" ;
-import { screen } from "./screen"; 
-import { setCameras } from "./camera" ;
+import { setFloor } from "../ThreeStack/floor" ; 
+import { setCameras } from "../scene/camera" ;
 import { getCanvas } from "./vrCanvas" ; 
-import { leftController } from "./controllers/controllerMeshRight" ; 
-import styles from "./Scene.module.css";
+import { leftController } from "../controllers/controllerMeshRight" ; 
+import styles from "./VRScene.module.css";
  
-export default class Scene extends React.Component {
+export default class VRScreen extends React.Component {
 
     constructor( props ) {
 

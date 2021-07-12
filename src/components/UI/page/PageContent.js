@@ -1,6 +1,5 @@
 import * as React from "react"
 import styles from "./PageContent.module.scss" ; 
-import Scene from "../../Scene" ;
 import ScreenScene  from "../../screens/ScreenScene"; 
 import { PageId } from "./definitions";
 import { AccountPage  } from "../../Pages/AccountPage";
@@ -24,17 +23,27 @@ export class PageContent extends React.Component {
   }
  
   renderPage( ){
+    switch (this.props.currentPage) {
 
-    //Home page for desktop
-    if( this.props.currentPage === PageId.Home )   return (
-      <ScreenScene buyNowAction={()=>this.props.changePage(PageId.BuildLab)}/>
-    ) ;
-    
-    //Account page
-    if( this.props.currentPage === PageId.Account ) return (<AccountPage/>) ; 
-    //BuildLab page
-    if( this.props.currentPage === PageId.BuildLab ) return (<BuildLab/>); 
-
+      case PageId.Account : 
+        return <AccountPage
+          xr = {this.state.xrSupport} 
+          theme = {this.props.theme} /> ; 
+        break; 
+     
+      case PageId.BuildLab :
+        return  <BuildLab 
+          xr = {this.state.xrSupport}
+          theme = {this.props.theme} /> ; 
+        break ; 
+      
+      default :
+        return <ScreenScene 
+          xr = {this.state.xrSupport}
+          buyNowAction={()=>this.props.changePage(PageId.BuildLab)}
+          theme = {this.props.theme} /> ; 
+        break; 
+    }
   }
 
   render(){

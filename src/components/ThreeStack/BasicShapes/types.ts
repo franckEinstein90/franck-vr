@@ -1,7 +1,4 @@
 
-
-
-
 export interface Shape {
     translateX? (x : number)  : void; 
     translateY? (x : number)  : void ;

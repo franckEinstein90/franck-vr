@@ -1,5 +1,5 @@
 import * as THREE from 'three';    
-import { plane } from "../plane" ;
+import { plane } from "./BasicShapes/plane" ;
 
 export const setFrontWall = (scene : THREE.Scene )=>{
     //floor is blue

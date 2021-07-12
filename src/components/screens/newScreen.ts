@@ -1,6 +1,6 @@
 import * as THREE from 'three'; 
 
-export const screen = (scene : THREE.Scene ) => {
+export const newScreen = (scene : THREE.Scene ) => {
     const height=1.8; 
     const geometry = new THREE.BoxGeometry( 3.2, height,  0.1 );
     const material = new THREE.MeshNormalMaterial();

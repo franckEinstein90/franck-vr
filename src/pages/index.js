@@ -6,10 +6,9 @@ import { Header }      from  "../components/Pages/Header" ;
 import { TopNav }      from "../components/UI/Navs/TopNav" ; 
 import { BottomNav }   from "../components/UI/Navs/BottomNav";
 import { PageContent }    from "../components/UI/page/PageContent";
-import BackgroundVideo from "../components/UI/VideoBackgrounds/VideoBackground" ; 
+import BackgroundVideo    from "../components/UI/VideoBackgrounds/VideoBackground" ; 
 import { PageId, Theme }  from "../components/UI/page/definitions";
 
-const appTitle = "powerBuild" ; 
 
 export default class IndexPage extends React.Component{
 
@@ -18,7 +17,7 @@ export default class IndexPage extends React.Component{
     super( props ); 
     this.state={
       appName   : "powerBuild" ,
-      language  : 'English', 
+      language  : 'English' , 
       page      : PageId.Home, 
       theme     : Theme.Light
     } ; 
@@ -44,7 +43,6 @@ export default class IndexPage extends React.Component{
     } else {
       this.setState({theme : Theme.Light})
     }
-
   }
 
   render(){
@@ -60,10 +58,10 @@ export default class IndexPage extends React.Component{
               />
       <PageContent  language={this.state.language}
                     currentPage ={this.state.page} 
-                    changePage={ p => this.changePage(p) } 
+                    changePage={ p => this.changePage(p) }
+                    theme = {this.theme } 
                     />
       <BottomNav currentPage={this.state.page} theme={this.state.theme}/>
     </div>
-
   )}; 
 }  
