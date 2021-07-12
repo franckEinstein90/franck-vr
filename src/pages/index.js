@@ -18,7 +18,7 @@ export default class IndexPage extends React.Component{
     this.state={
       appName   : "powerBuild" ,
       language  : 'English' , 
-      page      : PageId.Home, 
+      page      : PageId.BuildLab, 
       theme     : Theme.Light
     } ; 
     this.changeLanguage = this.changeLanguage.bind( this ); 

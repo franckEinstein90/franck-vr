@@ -2,6 +2,8 @@ declare namespace BuildLabModuleScssNamespace {
   export interface IBuildLabModuleScss {
     anime: string;
     buildLab: string;
+    buildLabContainer: string;
+    buildLabRightPane: string;
     canvas: string;
     container: string;
   }

@@ -17,7 +17,7 @@ export interface GearSystemState {
 }
 
 export interface GearSystem extends System<GearSystemState> {
-    driver( g : Gear )   : void ;
+    driver ( g : Gear )  : void ;
     addGear( g : Gear )  : void ; 
 }
 

@@ -85,10 +85,9 @@ export class BuildLab extends React.Component {
 
   render(){
       return (
-        <div>
+        <div className={styles.buildLabContainer}>
           <div><canvas id={this.canvasHtmlId} className={styles.buildLab}></canvas></div>
-          <div style={{color:'black'}}>BuildLab</div>
-
+          <div className={styles.buildLabRightPane}>BuildLab</div>
         </div>
       )
   }
