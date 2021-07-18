@@ -3,7 +3,7 @@ import { SimpleClock } from "./Clock/definitions" ;
 export interface System<T> {
 
    state   : T ; 
-   clock    : SimpleClock ;  
+   clock   : SimpleClock ;  
 
    next()  : void ;  //goes to next state
    pause() : void ;  

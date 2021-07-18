@@ -1,3 +1,4 @@
+import React, {Component} from "react"
 import moment from 'moment' ;
 
 export enum TimeUnit {
@@ -8,6 +9,12 @@ export enum TimeUnit {
 
 export interface Clock {
     elapsed(unit : TimeUnit) : number ; 
+} ; 
+
+export interface ClockState {
+    counter : number; 
+    date    : string ; 
+    running : boolean ; 
 } ; 
 
 export class SimpleClock implements Clock {

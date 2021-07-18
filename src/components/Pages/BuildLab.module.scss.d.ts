@@ -5,6 +5,8 @@ declare namespace BuildLabModuleScssNamespace {
     buildLabContainer: string;
     buildLabRightPane: string;
     canvas: string;
+    clockButton: string;
+    clockController: string;
     container: string;
   }
 }

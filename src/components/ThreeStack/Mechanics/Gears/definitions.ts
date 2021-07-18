@@ -13,10 +13,12 @@ export interface Gear extends Shapes.Round{
 }
 
 export interface GearSystemState {
-    name : string ; 
+    runningTime : number ; 
+    running     : boolean ; 
 }
 
 export interface GearSystem extends System<GearSystemState> {
+    rotationalVelocity   : number ; 
     driver ( g : Gear )  : void ;
     addGear( g : Gear )  : void ; 
 }

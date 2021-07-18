@@ -2,14 +2,12 @@ import * as React from "react"
 import { getCanvas } from "../VR/vrCanvas";
 import { setUpGearSystem} from "./buildLabsComponents/testGearSystem"; 
 import { setViewControls } from "./buildLabsComponents/orbitControls"; 
+import ReactClock from "../Systems/Clock/ReactClock" ; 
 import * as THREE from 'three' ;
-
 import { BuildItEditor } from "../UI/BuildItEditor/buildItEditor" ;
-import * as Monad from "../../components/UI/BuildItEditor/libs/monads/definitions" ; 
 import styles from "./BuildLab.module.scss" ; 
 
 const gearTextureUrl = "https://3.bp.blogspot.com/-aVndKMqhFH0/TuLlCNWfxAI/AAAAAAAAAg8/vpTDf96sr3A/s1600/Metal+armour+plating.jpg";    
-
 
  
 const _setLights = ( scene )=> {
@@ -40,11 +38,17 @@ export class BuildLab extends React.Component {
   
   constructor( props ) {
 
-    super( props ) ; 
+    super( props ) ;
+
+    this.state ={
+      date : null 
+    }  ; 
+
     this.mounted = false;
     this.canvasHtmlId   = "buildCanvas" ;     
     this.animate        = this.animate.bind( this ) ;  
     this.onresize       = this.onresize.bind( this ) ; 
+    this.tick           = this.tick.bind( this ) ; 
   }
 
   componentDidMount(){
@@ -83,11 +87,17 @@ export class BuildLab extends React.Component {
     requestAnimationFrame(this.animate);
   }
 
+  tick( running ){
+    if(this.gearSystem !== undefined) this.gearSystem.state.running = running ; 
+  }
+
   render(){
       return (
         <div className={styles.buildLabContainer}>
           <div><canvas id={this.canvasHtmlId} className={styles.buildLab}></canvas></div>
-          <div className={styles.buildLabRightPane}>BuildLab</div>
+          <div className={styles.buildLabRightPane}>
+            <ReactClock tick={this.tick}/>
+          </div>
         </div>
       )
   }

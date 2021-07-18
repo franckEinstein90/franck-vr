@@ -9,10 +9,9 @@ export class GearTrain implements GearSystem, Shape{
 
     public clock : SimpleClock ;
     public state : GearSystemState ; 
-
+    public rotationalVelocity = 0.072; 
 
     private _driver: Gear ;  
-    private _driverRotationPerCycle = 0.072; 
     private _connectedGears : Gear[] = [] ; 
     private _gridHelper : THREE.GridHelper ; 
 
@@ -21,7 +20,10 @@ export class GearTrain implements GearSystem, Shape{
         this.clock = new SimpleClock() ; 
         gridHelper.rotateX(Math.PI/2);
         scene.add( gridHelper );
-
+        this.state = {
+            runningTime : 0, 
+            running : false
+        }
     }
     
     driver( g: Gear ){
@@ -34,8 +36,10 @@ export class GearTrain implements GearSystem, Shape{
     }
 
     next(){
-        this._driver.turn(this._driverRotationPerCycle) ; 
-        this._connectedGears.forEach(g => g.turn(-1 * this._driverRotationPerCycle)) ; 
+        if(this.state.running){
+            this._driver.turn(this.rotationalVelocity) ; 
+            this._connectedGears.forEach(g => g.turn(-1 * this.rotationalVelocity)) ; 
+        }
     }
 
     pause(){
