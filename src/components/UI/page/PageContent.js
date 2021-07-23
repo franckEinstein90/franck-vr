@@ -10,16 +10,18 @@ export class PageContent extends React.Component {
   constructor( props ) {
     super( props ) ; 
     this.state = {
-      xrSupport : null
+      xrSupport : false  
     }
   }
   
   componentDidMount(){
-    navigator.xr.isSessionSupported( 'immersive-vr' )
+    if( 'xr' in window.navigator ){
+      return navigator.xr.isSessionSupported( 'immersive-vr' )
       .then( supported => {
         this.setState({xrSupport : supported})
         return ; 
       }) ; 
+    }
   }
  
   renderPage( ){
