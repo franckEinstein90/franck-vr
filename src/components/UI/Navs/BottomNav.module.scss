@@ -15,23 +15,21 @@ $desktopWidth       : 1000px;
     line-height: 60px;
     -webkit-font-smoothing: antialiased;
     text-transform: capitalize;
-    background-color:orange;
+    z-index:100;
 
     @media screen and (min-width: 768px){
+        height:$bottomNavHeight;
         display: flex;
         flex-direction: row;
         background: none;
         justify-content: space-around;
-
     }
 
     @media screen and (min-width: 1600px){
-       margin:0;
-        height:$bottomNavHeight;
+        margin:0;
         left:0; 
         align-items: center;
         line-height: initial; 
-        z-index:100;
         border-top: 1px solid black;
 
         >div{

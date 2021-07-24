@@ -3,15 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media screen and (min-width:768px){
-        background-color: pink;
-    }
-
-    @media screen and (min-width:1600px){
-        background-color: red;
-    }
+    background: none;
 
 }
+
 .lightIcons {
     color : white;
 }

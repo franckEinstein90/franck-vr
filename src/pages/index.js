@@ -12,7 +12,7 @@ import IdentityModal, { useIdentityContext } from "react-netlify-identity-widget
 import "react-netlify-identity-widget/styles.css" // delete if you want to bring your own CSS
 
 
-const Layout = ({ children }) => {
+const Layout = ( props )=> {
 
   const appName   = 'powerBuild'; 
   const identity  = useIdentityContext() ; 
@@ -27,8 +27,8 @@ const Layout = ({ children }) => {
     <div className={styles.pageContainer}> 
         <Header appName={appName} /> 
 
-        <BackgroundVideo currentPage={page} showingDialog={dialog}/>
-        <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog( false )} />   
+       <BackgroundVideo currentPage={page} showingDialog={dialog}/>
+       <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog( false )} />   
 
         <TopNav 
               isLoggedIn = {isLoggedIn}
@@ -37,15 +37,13 @@ const Layout = ({ children }) => {
               loginDialog={()=>setDialog(true)}
               changePage={(newPage) => setPage(newPage)}
           />
+       <PageContent 
+            theme = {theme} 
+            showingDialog={dialog}
+            currentPage ={page} 
+            changePage={ p => setPage(p) }/>
 
-          {children}
-          <PageContent  
-                    language={language}
-                    showingDialog={dialog}
-                    currentPage ={page} 
-                    changePage={ p => setPage(p) }/>
-
-          <BottomNav currentPage={page} theme={theme}/>
+        <BottomNav currentPage={page} theme={theme}/>
 
     </div>
   )
@@ -53,44 +51,12 @@ const Layout = ({ children }) => {
 
 export default class IndexPage extends React.Component{
 
-  constructor(props){
-
-    super( props ); 
-    this.state={
-      appName   : "powerBuild" ,
-      language  : 'English' , 
-      page      : PageId.Account, 
-      theme     : Theme.Light
-    } ; 
-    this.changeLanguage = this.changeLanguage.bind( this ); 
-    this.changePage     = this.changePage.bind( this ) ; 
-  }
-
-  changePage( page ){
-    this.setState({page : page}) ; 
-  }
-
-  changeLanguage(){
-    if(this.state.language === 'English') {
-      this.setState({language:'French'})
-    } else {
-      this.setState({language:'English'})
-    }
-  }
-
-  changeTheme(){
-    if(this.state.theme === Theme.Light){
-      this.setState({theme : Theme.Dark})
-    } else {
-      this.setState({theme : Theme.Light})
-    }
-  }
+  
 
   render(){
 
-  return (
+    return (
     <Layout>
-  
     </Layout>
   )}; 
 }  

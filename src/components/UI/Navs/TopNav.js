@@ -28,14 +28,16 @@ export class TopNav extends React.Component {
   }
 
   logginButton(){
+    let userEmail = '' ; 
     if( this.props.isLoggedIn ){
-      const userIdentity = this.props.user; 
-      console.log( userIdentity );
-      debugger;  
-      return (<button onClick={()=>this.props.loginDialog()}>Logout { userIdentity.email }</button> ) ;
-    } else {
-        return( <button onClick={()=>this.props.loginDialog()}>Login</button> ) ; 
+      debugger; 
+      if('user' in this.props) userEmail = this.props.user.email ;
     }
+      //return (<button onClick={()=>this.props.loginDialog()}>Logout { userIdentity.email }</button> ) ;
+      return (
+          <NavItem action={()=>this.props.loginDialog()}>
+                {this.props.isLoggedIn? `Logout ${userEmail}` : 'Login'}
+          </NavItem>)
   }
 
   render() {
