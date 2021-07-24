@@ -19,6 +19,8 @@ const Account = () => (
       <Settings path="/account/settings" />
       <Billing path="/account/billing" />
     </Router>
+
+
   </>
 )
 

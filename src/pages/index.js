@@ -35,15 +35,15 @@ const Layout = ( props )=> {
               user = {user}
               language={language} 
               loginDialog={()=>setDialog(true)}
-              changePage={(newPage) => setPage(newPage)}
-          />
+              changePage={(newPage) => setPage(newPage)} />
+
        <PageContent 
             theme = {theme} 
             showingDialog={dialog}
             currentPage ={page} 
-            changePage={ p => setPage(p) }/>
+            changePage={ p => setPage(p) } />
 
-        <BottomNav currentPage={page} theme={theme}/>
+        <BottomNav currentPage={page} theme={theme} />
 
     </div>
   )
@@ -51,12 +51,13 @@ const Layout = ( props )=> {
 
 export default class IndexPage extends React.Component{
 
-  
-
   render(){
 
     return (
-    <Layout>
-    </Layout>
+      <Layout>
+
+
+
+      </Layout>
   )}; 
 }  
