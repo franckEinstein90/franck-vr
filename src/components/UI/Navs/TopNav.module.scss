@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@500&display=swap');
 $topNavHeight       : 9vh; 
 $pageHeight         : 86vh; 
 $bottomNavHeight    : 5vh;
- 
 
 .topNav {
     position: absolute ; 
@@ -24,16 +24,10 @@ $bottomNavHeight    : 5vh;
     background: none;
     max-height: $topNavHeight; 
 
-    @media screen and (min-width:1200px) {
-        max-height: $topNavHeight + 3vh;
+    @media screen and (min-width:768px) {
+        max-height: $topNavHeight + 8vh;
         
     }
-
-    @media screen and (min-width:1900px) {
-        max-height: $topNavHeight + 8vh;
-    }
-
-
 
     >div{
         box-sizing: border-box;
@@ -46,7 +40,7 @@ $bottomNavHeight    : 5vh;
             max-height: 8vh;
         }
 
-        @media screen and (min-width:1900px) {
+        @media screen and (min-width:1600px) {
             overflow: initial;
             min-height: $topNavHeight ;
             max-height: $topNavHeight ;
@@ -75,18 +69,22 @@ $bottomNavHeight    : 5vh;
     align-self: stretch;
     text-align: center;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 
     @media screen and ( min-width:768px ){
         font-size:14px; 
     }
     @media screen and (min-width:1600px){
-        padding-top:10px;
+        align-items: center;
+        justify-content: center;
         font-size:18px;  
         height: 100%;   
         border-bottom: 1px black solid;
     } 
 
 }
+
 .loginButton:hover{
     background-color: rgba($color: #a0ff00, $alpha: 0.4);
     border-bottom: 3px rgb(224, 226, 220) inset;
@@ -96,16 +94,30 @@ $bottomNavHeight    : 5vh;
 
 .navItem{
     box-sizing: border-box;
-    background-color: rgba($color: #a0f0f0, $alpha: 0.3);
     margin-left:10px;
     flex:1;
     align-self: stretch;
     text-align: center;
     cursor: pointer;
 
-    @media screen and (min-width:1600px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Tourney', cursive;
+
+    @media screen and (min-width:768px){
+        border-right:2px dashed white; 
+        border-left:2px dashed white;
+        font-stretch: expanded; 
         height: 100%;   
-        padding-top:14px; 
+        font-size:35px; 
+        border-bottom: 1px black solid;
+    } 
+
+    @media screen and (min-width:1600px){
+        font-stretch: expanded; 
+        height: 100%;   
         font-size:35px; 
         border-bottom: 1px black solid;
     } 
@@ -114,6 +126,4 @@ $bottomNavHeight    : 5vh;
 .navItem:hover{
     background-color: rgba($color: #a0ff00, $alpha: 0.4);
     border-bottom: 3px rgb(224, 226, 220) inset;
-    border-left: 3px rgb(224, 226, 220) solid;
-    border-right: 3px rgb(224, 226, 220) inset;
 }

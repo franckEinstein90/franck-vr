@@ -29,7 +29,8 @@ export class PageContent extends React.Component {
 
       case PageId.Account : 
         return <AccountPage
-          xr = {this.state.xrSupport} 
+          xr = {this.state.xrSupport}
+          user = {this.props.user} 
           theme = {this.props.theme} /> ; 
         break; 
      

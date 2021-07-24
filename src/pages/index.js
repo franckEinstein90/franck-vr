@@ -22,22 +22,33 @@ const Layout = ( props )=> {
   const [theme, setTheme ] = React.useState( Theme.Light ); 
 
   const isLoggedIn = identity && identity.isLoggedIn ; 
-  const user = identity.user; 
+  const user = identity.user;
+  
+  const loginHandler = ( show )=>{
+    if(!isLoggedIn) {
+      setDialog( show );
+    } else {
+      setPage(PageId.Account)
+    }
+  }
+
   return (
     <div className={styles.pageContainer}> 
         <Header appName={appName} /> 
 
        <BackgroundVideo currentPage={page} showingDialog={dialog}/>
-       <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog( false )} />   
+       <IdentityModal showDialog={dialog} onCloseDialog={() => loginHandler( false )} />   
 
         <TopNav 
               isLoggedIn = {isLoggedIn}
               user = {user}
               language={language} 
-              loginDialog={()=>setDialog(true)}
+              loginDialog={()=>loginHandler(true)}
               changePage={(newPage) => setPage(newPage)} />
 
-       <PageContent 
+       <PageContent
+            isLoggedIn = {isLoggedIn} 
+            user={user}
             theme = {theme} 
             showingDialog={dialog}
             currentPage ={page} 

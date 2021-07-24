@@ -13,7 +13,7 @@ class NavItem extends React.Component {
    render(){
       return(
         <div className={styles.navItem} onClick={this.props.action}>
-            {this.props.children}
+            <div>{this.props.children}</div>
         </div>
       ) ; 
     }
@@ -28,7 +28,7 @@ class LoginButton extends React.Component {
    render(){
       return(
         <div className={styles.loginButton} onClick={this.props.action}>
-            {this.props.children}
+            <div>{this.props.children}</div>
         </div>
       ) ; 
     }
@@ -41,16 +41,13 @@ export class TopNav extends React.Component {
   }
 
   logginButton(){
-    let userEmail = '' ; 
-    if( this.props.isLoggedIn ){
-      debugger; 
-      if('user' in this.props) userEmail = this.props.user.email ;
-    }
-      //return (<button onClick={()=>this.props.loginDialog()}>Logout { userIdentity.email }</button> ) ;
+    const userEmail = this.props.isLoggedIn &&  'user' in this.props
+      ? this.props.user.email
+      : "Login" ; 
       return (
-          <LoginButton action={()=>this.props.loginDialog()}>
-                {this.props.isLoggedIn? `${userEmail}` : 'Login'}
-          </LoginButton>)
+        <LoginButton action={()=>this.props.loginDialog()}>
+              {userEmail}  
+        </LoginButton>)
   }
 
   render() {
