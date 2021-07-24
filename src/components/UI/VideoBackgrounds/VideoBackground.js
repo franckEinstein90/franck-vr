@@ -18,14 +18,22 @@ export default class BackgroundVideo extends React.Component{
       if(this.props.currentPage === PageId.BuildLab) return architectVideo;
       return vrManipVideo  ; 
     }
-  
-    render(){
+ 
+    showBackgroundVideo(){
+      if(this.props.showingDialog){
+        return(<></>); 
+      } else {
         return(
         <video className={styles.backgroundVideo} 
               playsInline autoPlay muted loop src={this.selectVideo()} 
               type="video/mp4">
         </video>
         )
+      }
+    }
+
+    render(){
+      return this.showBackgroundVideo(); 
     }
   } ; 
   

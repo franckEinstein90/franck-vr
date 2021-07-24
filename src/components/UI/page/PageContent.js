@@ -49,6 +49,7 @@ export class PageContent extends React.Component {
   }
 
   render(){
+    if( this.props.showingDialog ) return (<></>) ; 
     return (
           <div className={styles.page}> 
             { this.renderPage() }
