@@ -16,7 +16,6 @@ const Layout = ( props )=> {
 
   const appName   = 'powerBuild'; 
   const identity  = useIdentityContext() ; 
-  const [page, setPage] = React.useState( PageId.Menu); 
   const [dialog, setDialog] = React.useState(false) ; 
   const [language, setLanguage ] = React.useState('EN') ; 
   const [theme, setTheme ] = React.useState( Theme.Light ); 
@@ -25,10 +24,13 @@ const Layout = ( props )=> {
   const user = identity.user;
   
   const loginHandler = ( show )=>{
+
+
     if(!isLoggedIn) {
       setDialog( show );
     } else {
-      setPage(PageId.Account)
+      props.setUser( user ); 
+      props.setPage(PageId.Account)
     }
   }
 
@@ -36,25 +38,17 @@ const Layout = ( props )=> {
     <div className={styles.pageContainer}> 
         <Header appName={appName} /> 
 
-       <BackgroundVideo currentPage={page} showingDialog={dialog}/>
+       <BackgroundVideo currentPage={props.page} showingDialog={dialog}/>
        <IdentityModal showDialog={dialog} onCloseDialog={() => loginHandler( false )} />   
 
         <TopNav 
               isLoggedIn = {isLoggedIn}
               user = {user}
               language={language} 
-              loginDialog={()=>loginHandler(true)}
-              changePage={(newPage) => setPage(newPage)} />
-
-       <PageContent
-            isLoggedIn = {isLoggedIn} 
-            user={user}
-            theme = {theme} 
-            showingDialog={dialog}
-            currentPage ={page} 
-            changePage={ p => setPage(p) } />
-
-        <BottomNav currentPage={page} theme={theme} />
+              loginDialog={()=>loginHandler(true)}/>
+              
+        {props.children}
+        <BottomNav currentPage={props.page} theme={theme} />
 
     </div>
   )
@@ -62,13 +56,29 @@ const Layout = ( props )=> {
 
 export default class IndexPage extends React.Component{
 
+  constructor( props ){
+    super(props); 
+    this.state = {
+      page:PageId.Menu, 
+      user: null
+    }
+    this.setPage = this.setPage.bind( this ); 
+    this.setUser = this.setUser.bind( this ); 
+  }
+
+  setPage( pageId ){
+    this.setState({page : pageId}) ;
+  }
+
+  setUser( user ){
+    this.setState({user:user}); 
+  }
+
   render(){
-
     return (
-      <Layout>
-
-
-
+      <Layout page={this.state.page} setPage={this.setPage} setUser={this.setUser}>
+        <PageContent currentPage={this.state.page} user={this.state.user} />
       </Layout>
+
   )}; 
-}  
+}

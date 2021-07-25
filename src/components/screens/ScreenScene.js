@@ -75,7 +75,7 @@ export default class ScreenScene extends React.Component {
     this.mounted = true;  
 
     //prep 3js stack
-    this.scene    = newScene( 0x000000 ) ;  
+  /*  this.scene    = newScene( 0x000000 ) ;  
     this.canvas   = getCanvas( this.canvasHtmlId ) ;  
     this.camera   = setCameras( this.canvas, 1000, {x : 0, y : 0, z : 230} ); 
     this.renderer = _setRenderer( this.canvas ) 
@@ -92,7 +92,7 @@ export default class ScreenScene extends React.Component {
 
     window.addEventListener('resize', ()=>{
         this.onresize();
-    })
+    })*/
   }
 
   onresize(){  
@@ -103,9 +103,9 @@ export default class ScreenScene extends React.Component {
 
   animate(){ 
 
-    if(this.gearSystem !== undefined) this.gearSystem.next() ; 
+/*    if(this.gearSystem !== undefined) this.gearSystem.next() ; 
     this.renderer.render( this.scene, this.camera );  
-    requestAnimationFrame(this.animate);
+    requestAnimationFrame(this.animate);*/
 
   }
 
