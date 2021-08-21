@@ -26,13 +26,13 @@ export class GearTrain implements GearSystem, Shape{
         }
     }
     
-    driver( g: Gear ){
-        this._driver = g; 
+    driver( gear ){
+        this._driver = gear; 
     }
 
-    addGear ( g : Gear ){
+    addGear ( gear ){
         //Add a gear connected to the driver
-        this._connectedGears.push(g);
+        this._connectedGears.push( gear );
     }
 
     next(){

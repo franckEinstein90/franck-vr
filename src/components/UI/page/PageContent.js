@@ -43,7 +43,7 @@ export class PageContent extends React.Component {
       default :
         return <ScreenScene 
           xr = {this.state.xrSupport}
-          buyNowAction={()=>this.props.changePage(PageId.BuildLab)}
+          buyNowAction={()=>this.props.setPage(PageId.BuildLab)}
           theme = {this.props.theme} /> ; 
         break; 
     }

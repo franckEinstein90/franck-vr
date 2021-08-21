@@ -3,6 +3,7 @@ import {System} from "../../../Systems/definitions"
  
 export interface Gear extends Shapes.Round{
 
+    teeth       : number ;  
     velocity    : number ; 
     force       : number ;
     driver      : Gear   ;

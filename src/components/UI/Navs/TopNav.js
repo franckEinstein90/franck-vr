@@ -58,7 +58,7 @@ export class TopNav extends React.Component {
             {this.props.language}
           </NavItem>
         <div>
-          <NavItem action={()=>this.props.changePage(PageId.Home)}>
+          <NavItem action={()=>this.props.setPage( PageId.Home) }>
               Start
           </NavItem>
           <NavItem>Market</NavItem>

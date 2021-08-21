@@ -7,6 +7,7 @@ export interface Shape {
     rotateX? (x: number) : void ; 
 }
 
-export interface Round extends Shape{
+export interface Rotator extends Shape{
     radius : number;
+    turn( angle : number ) : void ; 
 }
