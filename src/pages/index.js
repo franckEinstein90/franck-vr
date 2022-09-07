@@ -1,7 +1,16 @@
-import * as React from "react"
-import PageContentContainer from "../components/UI/PageContentContainer/PageContentContainer" ;
-import styles from "./index.module.css" ; 
+/****************************************************************************** 
+ * 
+ *****************************************************************************/
 
+import * as React from "react" ; 
+import { HtmlHead } from "../components/UI/HtmlHead/HtmlHead";
+
+import { TopNav }           from "../components/UI/TopNav/TopNav" ;
+import PageContentContainer from "../components/UI/PageContentContainer/PageContentContainer" ;
+/*****************************************************************************/
+
+import styles from "./index.module.scss" ; 
+/*****************************************************************************/
 
 const Layout = ( props )=> {
 
@@ -11,10 +20,12 @@ const Layout = ( props )=> {
 
   
 
-  return (
-    <div className={styles.pageContainer}> 
+  return ( 
+      <div className={styles.pageContainer}>
+        <HtmlHead appName={appName} /> 
+        <TopNav />
         <PageContentContainer />
-    </div>
+      </div>
   )
 } ; 
 

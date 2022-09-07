@@ -1,0 +1,49 @@
+$topNavHeight       : 9vh; 
+$bottomNavHeight    : 10vh;
+
+.page {
+    position:absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index : 2; 
+    left:0;
+    top:$topNavHeight; 
+    width: 100vw; 
+    color: white;
+    height: 100vh - $topNavHeight - $bottomNavHeight; 
+    backdrop-filter:  brightness(50%);
+    align-items: center;
+    justify-content: center;
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        margin:0;
+        padding-top:30%;
+    }
+
+    @media (min-width: 768px) {
+        color:black;
+        margin:0;
+        padding:0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top:$topNavHeight;
+    }
+
+    >div{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 2vh;
+
+        button{
+            margin-top:3vh;
+            min-width: 25vw;
+            min-height:10vh; 
+            @media screen and (min-width:600px){
+                margin-top:50px;
+                min-width:20vw;
+            }
+        }
+    }
+}   

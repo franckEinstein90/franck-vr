@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@500&display=swap');
+$topNavHeight       : 9vh; 
+$pageHeight         : 86vh; 
+$bottomNavHeight    : 5vh;
+
+.topNav {
+    position: absolute ; 
+    top:0; 
+    left:0; 
+    box-sizing: border-box;
+    justify-content: center ;
+    color  : white;  
+    width  : 100vw;    
+    padding: 0;
+    z-index: 200;
+    display: flex ;
+    flex-direction: row;
+    -webkit-font-smoothing: antialiased;
+    text-transform: capitalize;
+    font-family:'Nunito', sans-serif;
+    justify-content: space-around;
+    line-height: initial; 
+    margin:0;
+    background: none;
+    max-height: $topNavHeight; 
+
+    @media screen and (min-width:768px) {
+        max-height: $topNavHeight + 8vh;
+        background: fixed;
+        background-color: blue;
+        
+    }
+
+    >div{
+        box-sizing: border-box;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        overflow: hidden;
+
+        @media screen and (min-width:1200px) {
+            max-height: 8vh;
+        }
+
+        @media screen and (min-width:1600px) {
+            overflow: initial;
+            min-height: $topNavHeight ;
+            max-height: $topNavHeight ;
+        }
+
+     }
+
+    >div:first-child{
+        max-width:5vw;
+        min-width:5vw;
+    }
+    >div:nth-child(2){
+        width:stretch;
+    }
+    >div:nth-child(3){
+        width:20%;
+    }
+}
+
+.loginButton{
+
+    box-sizing: border-box;
+    background-color: rgba($color: #a0f0f0, $alpha: 0.3);
+    margin-left:10px;
+    flex:1;
+    align-self: stretch;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and ( min-width:768px ){
+        font-size:14px; 
+    }
+    @media screen and (min-width:1600px){
+        align-items: center;
+        justify-content: center;
+        font-size:18px;  
+        height: 100%;   
+        border-bottom: 1px black solid;
+    } 
+
+}
+
+.loginButton:hover{
+    background-color: rgba($color: #a0ff00, $alpha: 0.4);
+    border-bottom: 3px rgb(224, 226, 220) inset;
+    border-left: 3px rgb(224, 226, 220) solid;
+    border-right: 3px rgb(224, 226, 220) inset;
+}
+
+.navItem{
+    box-sizing: border-box;
+    margin-left:10px;
+    flex:1;
+    align-self: stretch;
+    text-align: center;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Tourney', cursive;
+
+    @media screen and (min-width:768px){
+        border-right:2px dashed white; 
+        border-left:2px dashed white;
+        font-stretch: expanded; 
+        height: 100%;   
+        font-size:35px; 
+        border-bottom: 1px black solid;
+    } 
+
+    @media screen and (min-width:1600px){
+        font-stretch: expanded; 
+        height: 100%;   
+        font-size:35px; 
+        border-bottom: 1px black solid;
+    } 
+}
+
+.navItem:hover{
+    background-color: rgba($color: #a0ff00, $alpha: 0.4);
+    border-bottom: 3px rgb(224, 226, 220) inset;
+}

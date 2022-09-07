@@ -24,6 +24,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "three": "^0.124.0"
+    "three": "^0.144.0"
+  },
+  "devDependencies": {
+    "gatsby-plugin-scss-typescript": "^5.1.0",
+    "sass": "^1.54.9"
   }
 }
